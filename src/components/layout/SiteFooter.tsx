@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-sidebar-border bg-sidebar text-sidebar-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-4 lg:px-10">
         <div className="space-y-4">
-          <Logo />
+          <Logo variant="onDark" className="justify-start" />
           <p className="text-sm text-sidebar-foreground/70 leading-relaxed">
             Boutique residential property management for owners and residents
             who care about the details.
