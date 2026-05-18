@@ -11,9 +11,9 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-30 border-b border-border/60 bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-10">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-10">
         <Link to="/" className="shrink-0">
-          <Logo className="max-w-[180px]" />
+          <Logo className="max-w-[240px]" />
         </Link>
 
         <nav className="hidden flex-1 items-center justify-center gap-1 lg:flex">
@@ -51,7 +51,7 @@ export function SiteHeader() {
               <SheetTitle className="sr-only">Navigation</SheetTitle>
               <SheetDescription className="sr-only">Site navigation menu</SheetDescription>
               <div className="px-5 py-6">
-                <Logo />
+                <Logo variant="onDark" className="justify-start" />
               </div>
               <ul className="px-3 py-2">
                 {NAV_ITEMS.map((item) => (
