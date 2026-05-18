@@ -1,18 +1,24 @@
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 import { NAV_ITEMS } from "./nav-items";
+import houseSrc from "@/assets/miedema-house.png";
 
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-sidebar-border bg-sidebar text-sidebar-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-4 lg:px-10">
         <div className="space-y-4">
-          <Logo variant="onDark" className="justify-start" />
+          <img
+            src={houseSrc}
+            alt="Miedema Property Management"
+            className="h-40 w-auto object-contain"
+          />
           <p className="text-sm text-sidebar-foreground/70 leading-relaxed">
             Boutique residential property management for owners and residents
             who care about the details.
           </p>
         </div>
+
 
         <div>
           <h4 className="font-serif text-lg text-sidebar-foreground">Explore</h4>
