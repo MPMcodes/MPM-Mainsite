@@ -37,7 +37,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Button asChild size="sm" className="hidden sm:inline-flex uppercase tracking-[0.18em] text-xs">
-            <Link to="/owners">Management Quote</Link>
+            <Link to="/properties">View Rentals</Link>
           </Button>
           <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>

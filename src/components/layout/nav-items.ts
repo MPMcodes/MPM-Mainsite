@@ -1,4 +1,4 @@
-import { Home, Building2, Wrench, FileText, Users, Settings } from "lucide-react";
+import { Home, Building2, Wrench, FileText, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface NavItem {
@@ -13,5 +13,4 @@ export const NAV_ITEMS: NavItem[] = [
   { to: "/maintenance", label: "Maintenance", icon: Wrench },
   { to: "/journal", label: "Journal", icon: FileText },
   { to: "/residents", label: "Residents", icon: Users },
-  { to: "/owners", label: "Owners", icon: Settings },
 ];
