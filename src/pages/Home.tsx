@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
+import maintenanceStandardsImage from "@/assets/maintenance-standards.png";
 
 const HERO_PHOTO =
   "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=2400&q=80";
