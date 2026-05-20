@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
+import maintenanceStandardsImage from "@/assets/maintenance-standards.png";
 
 const HERO_PHOTO =
   "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=2400&q=80";
@@ -41,8 +42,7 @@ const PILLARS = [
   },
   {
     title: "Property Maintenance Standards",
-    image:
-      "https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=1400&q=80",
+    image: maintenanceStandardsImage,
     body: "Maintenance is the most time-consuming piece of managing a property — and every home is unique. We customize the way we communicate so every owner stays informed, with budgets discussed and before-and-after photos shared. Because we don't profit from maintenance, vendor discounts pass straight through to you.",
   },
   {
