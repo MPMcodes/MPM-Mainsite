@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import maintenanceStandardsImage from "@/assets/maintenance-standards.png";
+import rentalManagerSystemsImage from "@/assets/rental-manager-systems.png";
 
 const HERO_PHOTO =
   "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=2400&q=80";
@@ -36,8 +37,7 @@ const QUICK_LINKS = [
 const PILLARS = [
   {
     title: "Our Rental Manager Systems",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
+    image: rentalManagerSystemsImage,
     body: "We keep the lines of communication wide open. As a family-run firm, we offer the personal touch many enjoy. When an emergency comes up — and they always will — there is peace of mind in knowing exactly who to call and what the plan is. Our paperless systems give owners portal access to documents, photos, and accounting from anywhere.",
   },
   {
