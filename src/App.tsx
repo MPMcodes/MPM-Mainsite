@@ -20,7 +20,7 @@ export default function App() {
         <Route path="properties" element={<ComingSoon title="Portfolio" />} />
         <Route path="residents" element={<ComingSoon title="Resident Portal" />} />
         <Route path="maintenance" element={<ComingSoon title="Maintenance Requests" />} />
-        <Route path="owners" element={<ComingSoon title="Owner Inquiry" />} />
+        
         <Route path="journal" element={<ComingSoon title="The Journal" />} />
         <Route path="admin" element={<AdminShell />} />
         <Route path="*" element={<NotFound />} />

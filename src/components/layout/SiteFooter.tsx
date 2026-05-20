@@ -17,7 +17,7 @@ export function SiteFooter() {
             />
           </div>
           <p className="text-sm text-sidebar-foreground/70 leading-relaxed">
-            Boutique residential property management for owners and residents
+            Residential property management for owners and residents
             who care about the details.
           </p>
         </div>
@@ -47,7 +47,6 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-lg text-sidebar-foreground">Portals</h4>
           <ul className="mt-4 space-y-2 text-sm text-sidebar-foreground/75">
-            <li><Link to="/owners" className="hover:text-sidebar-primary">Owner Portal</Link></li>
             <li><Link to="/residents" className="hover:text-sidebar-primary">Resident Portal</Link></li>
             <li><Link to="/maintenance" className="hover:text-sidebar-primary">Submit a Request</Link></li>
           </ul>
