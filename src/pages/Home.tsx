@@ -7,10 +7,8 @@ import {
   Wallet,
   Wrench,
   FolderLock,
-  Gavel,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
 const HERO_PHOTO =
@@ -23,12 +21,12 @@ const QUICK_LINKS = [
     body: "Looking for a home to rent? View our listings to get started.",
   },
   {
-    to: "/owners",
+    to: "/properties",
     title: "Our Services",
     body: "Full-service management or à la carte — tailored to you.",
   },
   {
-    to: "/owners",
+    to: "/properties",
     title: "List Your Property",
     body: "Get started now and reclaim your peace of mind.",
   },
@@ -39,7 +37,7 @@ const PILLARS = [
     title: "Our Rental Manager Systems",
     image:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
-    body: "We keep the lines of communication wide open. As a boutique-style firm, we offer the personal touch many enjoy. When an emergency comes up — and they always will — there is peace of mind in knowing exactly who to call and what the plan is. Our paperless systems give owners portal access to documents, photos, and accounting from anywhere.",
+    body: "We keep the lines of communication wide open. As a family-run firm, we offer the personal touch many enjoy. When an emergency comes up — and they always will — there is peace of mind in knowing exactly who to call and what the plan is. Our paperless systems give owners portal access to documents, photos, and accounting from anywhere.",
   },
   {
     title: "Property Maintenance Standards",
@@ -81,25 +79,12 @@ const SERVICES = [
     title: "Management Portal",
     body: "Accounting, tax documents, communications and more in one online system with bank-grade security and redundancy.",
   },
-  {
-    icon: Gavel,
-    title: "Legal Actions & Notices",
-    body: "We stay current on landlord and resident law so you're never caught off-guard. We know how to file actions and settle disputes.",
-  },
 ];
 
 const SOLUTIONS = [
   {
     title: "Turn-Key Services",
     body: "Getting your home rent-ready doesn't have to be a hassle. We oversee the process from start to finish using our trusted vendor network.",
-  },
-  {
-    title: "Lease-Only Option",
-    body: "Want us to locate a great resident on your terms? We have you covered — even if you don't require ongoing management.",
-  },
-  {
-    title: "HOA Coordination",
-    body: "Small word, big headaches. We make sure your property stays in compliance so your neighbors find something else to discuss.",
   },
 ];
 
@@ -135,7 +120,7 @@ export default function Home() {
 
         <div className="mx-auto flex min-h-[80vh] max-w-5xl flex-col items-center justify-center px-6 py-24 text-center lg:px-10">
           <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
-            Boutique Property Management
+            Family-Run Property Management
           </p>
           <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Looking for Quality
@@ -149,7 +134,7 @@ export default function Home() {
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Button asChild size="lg" className="uppercase tracking-[0.18em] text-xs">
-              <Link to="/owners">Free Rental Analysis</Link>
+              <Link to="/properties">Book a Showing</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="uppercase tracking-[0.18em] text-xs">
               <Link to="/properties">View Rentals</Link>
@@ -236,7 +221,7 @@ export default function Home() {
             </p>
             <div className="mt-7">
               <Button asChild size="lg" className="uppercase tracking-[0.18em] text-xs">
-                <Link to="/owners">Free Rental Analysis</Link>
+                <Link to="/properties">Book a Showing</Link>
               </Button>
             </div>
           </div>
@@ -257,7 +242,7 @@ export default function Home() {
                     {s.body}
                   </p>
                   <Link
-                    to="/owners"
+                    to="/properties"
                     className="mt-5 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-[0.2em] text-accent hover:text-primary"
                   >
                     Learn more <ArrowUpRight className="size-3" />
@@ -281,7 +266,7 @@ export default function Home() {
         </div>
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {SOLUTIONS.map((s) => (
-            <article key={s.title} className={`${cardBase} p-8`}>
+            <article key={s.title} className={`${cardBase} p-8 md:col-start-2`}>
               <h3 className="font-serif text-2xl font-semibold text-foreground">
                 {s.title}
               </h3>
@@ -293,37 +278,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- RENTAL ANALYSIS CTA ---------- */}
+      {/* ---------- SHOWING CTA ---------- */}
       <section className="bg-sidebar text-sidebar-foreground">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-2 lg:px-10">
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-sidebar-foreground/60">
-              No obligation
+              We&apos;re here to help
             </p>
             <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-sidebar-foreground md:text-5xl">
-              Get a free rental analysis in minutes.
+              Interest in an active listing? Book a personal showing here or with our live chat!
             </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-sidebar-foreground/75">
-              Receive a detailed report directly in your inbox so you can make
-              an informed decision on how to price your rental property.
-            </p>
           </div>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col gap-3 self-center rounded-2xl border border-sidebar-border bg-sidebar-accent/40 p-6 sm:p-8"
-          >
-            <label className="text-xs font-medium uppercase tracking-[0.2em] text-sidebar-foreground/70">
-              Property address
-            </label>
-            <Input
-              type="text"
-              placeholder="123 Elm Street, Grand Rapids, MI"
-              className="border-sidebar-border bg-sidebar text-sidebar-foreground placeholder:text-sidebar-foreground/40"
-            />
-            <Button type="submit" size="lg" className="mt-2 uppercase tracking-[0.18em] text-xs">
-              Submit
+          <div className="flex flex-col gap-3 self-center rounded-2xl border border-sidebar-border bg-sidebar-accent/40 p-6 sm:p-8">
+            <p className="text-sm leading-relaxed text-sidebar-foreground/75">
+              Browse our current listings and reserve a time that works for you,
+              or message our team directly in the chat.
+            </p>
+            <Button asChild size="lg" className="mt-2 uppercase tracking-[0.18em] text-xs">
+              <Link to="/properties">View Active Listings</Link>
             </Button>
-          </form>
+          </div>
         </div>
       </section>
 
