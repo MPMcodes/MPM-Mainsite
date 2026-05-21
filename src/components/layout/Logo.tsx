@@ -2,6 +2,7 @@ import houseSrc from "@/assets/logo-house.png";
 import miedemaSrc from "@/assets/logo-miedema.png";
 import propertySrc from "@/assets/logo-property.png";
 import managementSrc from "@/assets/logo-management.png";
+import borderSrc from "@/assets/logo-border.jpg";
 
 /**
  * Miedema header lockup composed from the original logo artwork pieces so
