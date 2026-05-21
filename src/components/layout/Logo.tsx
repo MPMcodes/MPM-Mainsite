@@ -2,11 +2,11 @@ import houseSrc from "@/assets/logo-house.png";
 import miedemaSrc from "@/assets/logo-miedema.png";
 import propertySrc from "@/assets/logo-property.png";
 import managementSrc from "@/assets/logo-management.png";
+import mobileHeaderSrc from "@/assets/logo-header-mobile.png";
 
 /**
- * Miedema header lockup composed from the original logo artwork pieces so
- * the typography matches the source: house icon far-left, "Miedema" script
- * centered, and stacked "Property / Management" pushed to the far right.
+ * Miedema header lockup. On mobile, renders the bordered combined header
+ * artwork. On sm+ screens, composes the individual logo pieces.
  */
 export function Logo({
   className = "",
@@ -21,22 +21,26 @@ export function Logo({
     <div
       className={`flex h-16 w-full items-center justify-between gap-3 px-3 sm:h-20 sm:px-5 ${className}`}
     >
+      {/* Mobile: single bordered header image */}
+      <img
+        src={mobileHeaderSrc}
+        alt="Miedema Property Management"
+        className={`h-full w-auto max-w-full object-contain sm:hidden ${tint}`}
+      />
 
-
+      {/* sm+ : composed lockup */}
       <img
         src={houseSrc}
         alt=""
         aria-hidden="true"
-        className={`h-10 w-auto shrink-0 object-contain sm:h-14 ${tint}`}
+        className={`hidden h-10 w-auto shrink-0 object-contain sm:block sm:h-14 ${tint}`}
       />
       <img
         src={miedemaSrc}
         alt="Miedema"
-        className={`h-[140%] w-auto max-w-[75%] -my-4 object-contain ${tint}`}
+        className={`hidden h-[140%] w-auto max-w-[75%] -my-4 object-contain sm:block ${tint}`}
       />
-
-
-      <div className="flex shrink-0 flex-col items-end gap-1">
+      <div className="hidden shrink-0 flex-col items-end gap-1 sm:flex">
         <img
           src={propertySrc}
           alt="Property"
