@@ -8,11 +8,11 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-sidebar-border bg-sidebar text-sidebar-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-4 lg:px-10">
         <div className="space-y-4">
-          <div className="overflow-hidden rounded-lg border border-sidebar-border/50 shadow-md">
+          <div className="overflow-hidden rounded-lg border border-sidebar-border/50 bg-sidebar-accent/20 shadow-md">
             <img
               src={houseSrc}
               alt="Miedema managed residence"
-              className="h-40 w-full object-cover"
+              className="mx-auto h-40 w-auto max-w-full object-contain"
               loading="lazy"
             />
           </div>
