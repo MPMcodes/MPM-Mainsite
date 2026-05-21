@@ -21,12 +21,13 @@ export function Logo({
     <div
       className={`flex h-24 w-full items-center justify-between gap-3 px-0 sm:h-20 sm:px-5 sm:gap-3 ${className}`}
     >
-      {/* Mobile: single bordered header image */}
+      {/* Mobile: single header image (no border), full height */}
       <img
         src={mobileHeaderSrc}
         alt="Miedema Property Management"
-        className={`block h-full w-full object-contain sm:hidden ${tint}`}
+        className={`block h-full w-auto max-w-full object-contain sm:hidden ${tint}`}
       />
+
 
 
       {/* sm+ : composed lockup */}
