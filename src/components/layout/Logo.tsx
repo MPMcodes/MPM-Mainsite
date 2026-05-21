@@ -20,7 +20,8 @@ export function Logo({
 
   return (
     <div
-      className={`flex h-16 w-full items-center justify-between gap-3 rounded-md border-2 border-[#6b3a2a]/70 px-3 sm:h-20 sm:px-5 ${className}`}
+      className={`flex h-16 w-full items-center justify-between gap-3 rounded-md bg-cover bg-center bg-no-repeat px-6 sm:h-20 sm:px-10 ${className}`}
+      style={{ backgroundImage: `url(${borderSrc})` }}
     >
       <img
         src={houseSrc}
