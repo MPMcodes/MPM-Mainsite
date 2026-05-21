@@ -2,7 +2,7 @@ import houseSrc from "@/assets/logo-house.png";
 import miedemaSrc from "@/assets/logo-miedema.png";
 import propertySrc from "@/assets/logo-property.png";
 import managementSrc from "@/assets/logo-management.png";
-import borderSrc from "@/assets/logo-border.jpg";
+import { VintageBorder } from "./VintageBorder";
 
 /**
  * Miedema header lockup composed from the original logo artwork pieces so
@@ -17,12 +17,14 @@ export function Logo({
   variant?: "default" | "onDark";
 }) {
   const tint = variant === "onDark" ? "brightness-0 invert opacity-90" : "";
+  const borderColor = variant === "onDark" ? "#f3e7d3" : "#6b3a2a";
 
   return (
     <div
-      className={`flex h-16 w-full items-center justify-between gap-3 rounded-md bg-no-repeat px-6 sm:h-20 sm:px-10 ${className}`}
-      style={{ backgroundImage: `url(${borderSrc})`, backgroundSize: "100% 100%" }}
+      className={`relative flex h-16 w-full items-center justify-between gap-3 rounded-md px-6 sm:h-20 sm:px-10 ${className}`}
     >
+      <VintageBorder color={borderColor} />
+
       <img
         src={houseSrc}
         alt=""
