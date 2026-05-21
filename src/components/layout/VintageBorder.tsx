@@ -1,8 +1,8 @@
 /**
- * Crisp, resolution-independent vintage frame that hugs the header edges
- * regardless of width. Uses non-scaling strokes so the double lines stay
- * the same weight, and fixed-size corner/edge ornaments anchored to each
- * corner and edge midpoint so the flourishes never stretch.
+ * Crisp vintage frame that hugs the header edges at any width. The double
+ * lines are real CSS borders (no stretching) and the corner + edge
+ * ornaments are fixed-size SVG sprites absolutely positioned to each
+ * corner and edge midpoint, so the flourishes never distort.
  */
 export function VintageBorder({
   color = "#6b3a2a",
@@ -11,70 +11,92 @@ export function VintageBorder({
   color?: string;
   className?: string;
 }) {
-  // Corner flourish (top-left orientation). Other corners reuse via rotation/mirror.
-  const corner = (
-    <g fill="none" stroke={color} strokeWidth={1.25} strokeLinecap="round">
-      <path d="M2 22 C 2 10, 10 2, 22 2" />
-      <path d="M6 22 C 6 12, 12 6, 22 6" />
-      <path d="M10 14 c 0 -3 2 -5 5 -5" />
-      <circle cx="10" cy="14" r="1.1" fill={color} stroke="none" />
-      <circle cx="15" cy="9" r="1.1" fill={color} stroke="none" />
-      <path d="M14 18 c 1.5 0 3 -1.5 3 -3" />
-      <path d="M18 14 c 1.5 0 3 -1.5 3 -3" />
-    </g>
+  // Top-left corner flourish, ~26x26. Other corners reuse via CSS transforms.
+  const Corner = ({ transform }: { transform: string }) => (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      className="absolute"
+      style={{ transform }}
+      aria-hidden="true"
+    >
+      <g fill="none" stroke={color} strokeWidth="1.1" strokeLinecap="round">
+        <path d="M2 26 C 2 12, 12 2, 26 2" />
+        <path d="M6 26 C 6 14, 14 6, 26 6" />
+        <path d="M10 18 q 0 -4 4 -6" />
+        <path d="M18 10 q -4 0 -6 4" />
+      </g>
+      <g fill={color}>
+        <circle cx="11" cy="17" r="1.2" />
+        <circle cx="17" cy="11" r="1.2" />
+        <circle cx="14" cy="14" r="0.9" />
+      </g>
+    </svg>
   );
 
-  // Small fleur ornament for edge midpoints.
-  const fleurH = (
-    <g fill={color} stroke="none">
-      <path d="M-10 0 q 4 -4 8 0 q -4 4 -8 0 z" />
-      <path d="M10 0 q -4 -4 -8 0 q 4 4 8 0 z" />
-      <circle cx="0" cy="0" r="1.4" />
-      <path d="M0 -4 q 2 2 0 4 q -2 -2 0 -4 z" />
-    </g>
+  // Horizontal edge ornament (top/bottom midpoints), ~24x10.
+  const FleurH = ({ transform }: { transform: string }) => (
+    <svg
+      width="26"
+      height="12"
+      viewBox="0 0 26 12"
+      className="absolute"
+      style={{ transform }}
+      aria-hidden="true"
+    >
+      <g fill={color} stroke="none">
+        <path d="M2 6 q 4 -4 8 0 q -4 4 -8 0 z" />
+        <path d="M24 6 q -4 -4 -8 0 q 4 4 8 0 z" />
+        <path d="M13 1 q 2 2.5 0 5 q -2 -2.5 0 -5 z" />
+        <path d="M13 7 q 2 2 0 4 q -2 -2 0 -4 z" />
+        <circle cx="13" cy="6" r="1.4" />
+      </g>
+    </svg>
   );
 
   return (
-    <svg
-      className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
-      preserveAspectRatio="none"
+    <div
+      className={`pointer-events-none absolute inset-0 ${className}`}
       aria-hidden="true"
     >
-      {/* Outer + inner double frame lines. Non-scaling strokes keep weight constant. */}
-      <rect
-        x="4"
-        y="4"
-        width="calc(100% - 8px)"
-        height="calc(100% - 8px)"
-        fill="none"
-        stroke={color}
-        strokeWidth={1.25}
-        vectorEffect="non-scaling-stroke"
+      {/* Outer + inner double frame lines as real borders — never stretched. */}
+      <div
+        className="absolute inset-1 rounded-[3px] border"
+        style={{ borderColor: color, borderWidth: 1.25 }}
       />
-      <rect
-        x="10"
-        y="10"
-        width="calc(100% - 20px)"
-        height="calc(100% - 20px)"
-        fill="none"
-        stroke={color}
-        strokeWidth={0.75}
-        vectorEffect="non-scaling-stroke"
+      <div
+        className="absolute inset-[7px] rounded-[2px] border"
+        style={{ borderColor: color, borderWidth: 0.75, opacity: 0.85 }}
       />
 
-      {/* Corner flourishes — fixed pixel size, anchored to each corner. */}
-      <g transform="translate(4 4)">{corner}</g>
-      <g transform="translate(calc(100% - 4px) 4) scale(-1 1)">{corner}</g>
-      <g transform="translate(4 calc(100% - 4px)) scale(1 -1)">{corner}</g>
-      <g transform="translate(calc(100% - 4px) calc(100% - 4px)) scale(-1 -1)">
-        {corner}
-      </g>
+      {/* Corners anchored to each edge. */}
+      <div className="absolute left-0 top-0">
+        <Corner transform="none" />
+      </div>
+      <div className="absolute right-0 top-0">
+        <Corner transform="scaleX(-1)" />
+      </div>
+      <div className="absolute bottom-0 left-0">
+        <Corner transform="scaleY(-1)" />
+      </div>
+      <div className="absolute bottom-0 right-0">
+        <Corner transform="scale(-1,-1)" />
+      </div>
 
-      {/* Edge midpoint ornaments. */}
-      <g transform="translate(50% 7)">{fleurH}</g>
-      <g transform="translate(50% calc(100% - 7px))">{fleurH}</g>
-      <g transform="translate(7 50%) rotate(90)">{fleurH}</g>
-      <g transform="translate(calc(100% - 7px) 50%) rotate(-90)">{fleurH}</g>
-    </svg>
+      {/* Edge midpoint flourishes. */}
+      <div className="absolute left-1/2 top-0 -translate-x-1/2">
+        <FleurH transform="none" />
+      </div>
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+        <FleurH transform="scaleY(-1)" />
+      </div>
+      <div className="absolute left-0 top-1/2 -translate-y-1/2">
+        <FleurH transform="rotate(-90deg) translateY(-7px)" />
+      </div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2">
+        <FleurH transform="rotate(90deg) translateY(-7px)" />
+      </div>
+    </div>
   );
 }
