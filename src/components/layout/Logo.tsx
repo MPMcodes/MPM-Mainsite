@@ -19,33 +19,41 @@ export function Logo({
 
   return (
     <div
-      className={`flex h-24 w-full items-center justify-between gap-2 px-2 sm:h-20 sm:px-5 sm:gap-3 ${className}`}
+      className={`flex h-24 w-full items-center justify-between gap-3 px-0 sm:h-20 sm:px-5 sm:gap-3 ${className}`}
     >
+      {/* Mobile: single bordered header image */}
+      <img
+        src={mobileHeaderSrc}
+        alt="Miedema Property Management"
+        className={`block h-full w-full object-contain sm:hidden ${tint}`}
+      />
+
+
+      {/* sm+ : composed lockup */}
       <img
         src={houseSrc}
         alt=""
         aria-hidden="true"
-        className={`h-16 w-auto shrink-0 object-contain sm:h-14 ${tint}`}
+        className={`hidden h-10 w-auto shrink-0 object-contain sm:block sm:h-14 ${tint}`}
       />
       <img
         src={miedemaSrc}
         alt="Miedema"
-        className={`h-[180%] w-auto max-w-[70%] -my-6 object-contain sm:h-[140%] sm:max-w-[75%] sm:-my-4 ${tint}`}
+        className={`hidden h-[140%] w-auto max-w-[75%] -my-4 object-contain sm:block ${tint}`}
       />
-      <div className="flex shrink-0 flex-col items-end gap-1">
+      <div className="hidden shrink-0 flex-col items-end gap-1 sm:flex">
         <img
           src={propertySrc}
           alt="Property"
-          className={`h-3.5 w-auto object-contain sm:h-4 ${tint}`}
+          className={`h-3 w-auto object-contain sm:h-4 ${tint}`}
         />
         <img
           src={managementSrc}
           alt="Management"
-          className={`h-3.5 w-auto object-contain sm:h-4 ${tint}`}
+          className={`h-3 w-auto object-contain sm:h-4 ${tint}`}
         />
       </div>
       <span className="sr-only">Miedema Property Management</span>
     </div>
-
   );
 }
