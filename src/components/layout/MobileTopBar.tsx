@@ -27,9 +27,10 @@ export function MobileTopBar() {
           </div>
         </SheetContent>
       </Sheet>
-      <div className="flex-1 px-3">
-        <Logo className="mx-auto max-w-[180px]" />
+      <div className="flex-1 pl-2 pr-3">
+        <Logo className="max-w-[180px] mr-auto" />
       </div>
+
       <ThemeToggle className="text-foreground hover:bg-muted hover:text-foreground" />
     </header>
   );
