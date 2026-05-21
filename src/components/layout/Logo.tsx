@@ -1,9 +1,8 @@
-import logoSrc from "@/assets/miedema-logo.png";
 import logoMobileSrc from "@/assets/miedema-logo-mobile.png";
 
 /**
  * Miedema wordmark — transparent, blends into header/footer surface.
- * Uses a dedicated mobile asset on small viewports.
+ * Uses the mobile banner asset across all viewports for a unified look.
  */
 export function Logo({
   className = "",
@@ -18,12 +17,7 @@ export function Logo({
       <img
         src={logoMobileSrc}
         alt="Miedema Property Management"
-        className={`h-14 w-auto object-contain md:hidden ${tint}`}
-      />
-      <img
-        src={logoSrc}
-        alt="Miedema Property Management"
-        className={`hidden h-16 w-auto object-contain md:block md:h-20 ${tint}`}
+        className={`h-14 w-auto object-contain ${tint}`}
       />
     </div>
   );
