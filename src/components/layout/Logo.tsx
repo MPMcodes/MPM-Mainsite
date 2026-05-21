@@ -19,7 +19,7 @@ export function Logo({
 
   return (
     <div
-      className={`flex h-16 w-full items-center justify-between gap-2 px-1 sm:h-20 sm:gap-3 sm:px-5 ${className}`}
+      className={`flex h-16 w-full items-center justify-between gap-3 px-3 sm:h-20 sm:px-5 ${className}`}
     >
 
 
