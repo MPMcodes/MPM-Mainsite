@@ -10,10 +10,10 @@ import { NAV_ITEMS } from "./nav-items";
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
-  const mobileMenu = (
+  const menuSheet = (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className="absolute right-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg text-foreground hover:bg-muted"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground hover:bg-muted"
         aria-label="Open menu"
       >
         <Menu className="size-5" />
@@ -51,21 +51,19 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-border/60 bg-background/90 backdrop-blur-md">
-      {/* Mobile / tablet: logo banner fills width, menu toggle sits inside its border */}
-      <div className="relative lg:hidden">
-        <Link to="/" className="block px-2 py-2">
-          <Logo className="w-full max-w-none [&_img]:!h-auto [&_img]:!max-h-20 [&_img]:w-full" />
+      {/* Mobile / tablet */}
+      <div className="flex items-center gap-2 px-3 py-2 lg:hidden">
+        <ThemeToggle />
+        <Link to="/" className="flex flex-1 justify-center">
+          <Logo />
         </Link>
-        <div className="absolute left-3 top-1/2 -translate-y-1/2">
-          <ThemeToggle />
-        </div>
-        {mobileMenu}
+        {menuSheet}
       </div>
 
       {/* Desktop */}
       <div className="mx-auto hidden h-24 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:flex lg:px-10">
         <Link to="/" className="shrink-0">
-          <Logo className="max-w-[240px]" />
+          <Logo />
         </Link>
 
         <nav className="flex flex-1 items-center justify-center gap-1">
@@ -92,6 +90,7 @@ export function SiteHeader() {
             <Link to="/properties">View Rentals</Link>
           </Button>
           <ThemeToggle />
+          {menuSheet}
         </div>
       </div>
     </header>
