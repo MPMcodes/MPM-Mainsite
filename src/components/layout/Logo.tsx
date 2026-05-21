@@ -32,8 +32,9 @@ export function Logo({
       <img
         src={miedemaSrc}
         alt="Miedema"
-        className={`h-full max-h-full w-auto max-w-[55%] py-1 object-contain ${tint}`}
+        className={`h-[140%] w-auto max-w-[75%] -my-4 object-contain ${tint}`}
       />
+
 
       <div className="flex shrink-0 flex-col items-end gap-1">
         <img
