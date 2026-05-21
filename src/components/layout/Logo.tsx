@@ -2,6 +2,7 @@ import houseSrc from "@/assets/logo-house.png";
 import miedemaSrc from "@/assets/logo-miedema.png";
 import propertySrc from "@/assets/logo-property.png";
 import managementSrc from "@/assets/logo-management.png";
+import borderSrc from "@/assets/logo-border.jpg";
 
 /**
  * Miedema header lockup composed from the original logo artwork pieces so
@@ -19,7 +20,8 @@ export function Logo({
 
   return (
     <div
-      className={`flex h-16 w-full items-center justify-between gap-3 rounded-md border-2 border-[#6b3a2a]/70 px-3 sm:h-20 sm:px-5 ${className}`}
+      className={`flex h-16 w-full items-center justify-between gap-3 rounded-md bg-cover bg-center bg-no-repeat px-6 sm:h-20 sm:px-10 ${className}`}
+      style={{ backgroundImage: `url(${borderSrc})` }}
     >
       <img
         src={houseSrc}
