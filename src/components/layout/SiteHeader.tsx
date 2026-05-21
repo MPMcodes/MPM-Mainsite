@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { NAV_ITEMS } from "./nav-items";
@@ -10,89 +8,49 @@ import { NAV_ITEMS } from "./nav-items";
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
-  const menuSheet = (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger
-        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground hover:bg-muted"
-        aria-label="Open menu"
-      >
-        <Menu className="size-5" />
-      </SheetTrigger>
-      <SheetContent side="right" className="w-72 border-l-0 bg-sidebar p-0 text-sidebar-foreground">
-        <SheetTitle className="sr-only">Navigation</SheetTitle>
-        <SheetDescription className="sr-only">Site navigation menu</SheetDescription>
-        <div className="px-5 py-6">
-          <Logo variant="onDark" className="justify-start" />
-        </div>
-        <ul className="px-3 py-2">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.to}>
-              <NavLink
-                to={item.to}
-                end={item.to === "/"}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium ${
-                    isActive
-                      ? "bg-sidebar-accent text-sidebar-primary"
-                      : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground"
-                  }`
-                }
-              >
-                <item.icon className="size-4" />
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </SheetContent>
-    </Sheet>
-  );
-
   return (
     <header className="sticky top-0 z-30 border-b border-border/60 bg-background/90 backdrop-blur-md">
-      {/* Mobile / tablet */}
-      <div className="flex items-center gap-2 px-3 py-2 lg:hidden">
+      <div className="flex items-center gap-2 px-3 py-2">
         <ThemeToggle />
         <Link to="/" className="flex flex-1 justify-center">
           <Logo />
         </Link>
-        {menuSheet}
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground hover:bg-muted"
+        >
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        </button>
       </div>
 
-      {/* Desktop */}
-      <div className="mx-auto hidden h-24 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:flex lg:px-10">
-        <Link to="/" className="shrink-0">
-          <Logo />
-        </Link>
-
-        <nav className="flex flex-1 items-center justify-center gap-1">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.to === "/"}
-              className={({ isActive }) =>
-                `rounded-md px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive
-                    ? "text-accent"
-                    : "text-foreground/80 hover:text-accent"
-                }`
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
+      {open && (
+        <nav className="border-t border-border/60 bg-background/95 backdrop-blur-md">
+          <ul className="mx-auto flex max-w-7xl flex-col gap-1 px-3 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-center lg:gap-2 lg:px-10">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.to}>
+                <NavLink
+                  to={item.to}
+                  end={item.to === "/"}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-wide transition-colors lg:py-2 ${
+                      isActive
+                        ? "bg-muted text-accent"
+                        : "text-foreground/80 hover:bg-muted hover:text-accent"
+                    }`
+                  }
+                >
+                  <item.icon className="size-4" />
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
         </nav>
-
-        <div className="flex items-center gap-2">
-          <Button asChild size="sm" className="uppercase tracking-[0.18em] text-xs">
-            <Link to="/properties">View Rentals</Link>
-          </Button>
-          <ThemeToggle />
-          {menuSheet}
-        </div>
-      </div>
+      )}
     </header>
   );
 }
