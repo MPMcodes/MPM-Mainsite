@@ -19,7 +19,7 @@ export function Logo({
 
   return (
     <div
-      className={`flex h-14 w-full items-center justify-center gap-3 px-0 sm:h-20 sm:justify-between sm:px-5 ${className}`}
+      className={`flex h-14 w-full items-center justify-center gap-3 px-0 sm:h-20 sm:justify-between sm:gap-2 sm:px-2 ${className}`}
     >
       {/* Mobile: tight single-image lockup, fills bar height */}
       <img
@@ -28,18 +28,22 @@ export function Logo({
         className={`block h-full w-auto max-w-full object-contain sm:hidden ${tint}`}
       />
 
-      {/* sm+ : composed lockup */}
+      {/* sm+ : house pinned left */}
       <img
         src={houseSrc}
         alt=""
         aria-hidden="true"
         className={`hidden h-14 w-auto shrink-0 object-contain sm:block ${tint}`}
       />
+
+      {/* sm+ : Miedema hugs the house, drifts toward center */}
       <img
         src={miedemaSrc}
         alt="Miedema"
-        className={`hidden h-[140%] w-auto max-w-[75%] -my-4 object-contain sm:block ${tint}`}
+        className={`hidden h-[140%] w-auto max-w-[55%] -my-4 mr-auto object-contain sm:block ${tint}`}
       />
+
+      {/* sm+ : Property / Management pinned right */}
       <div className="hidden shrink-0 flex-col items-end gap-1 sm:flex">
         <img
           src={propertySrc}
@@ -52,6 +56,7 @@ export function Logo({
           className={`h-4 w-auto object-contain ${tint}`}
         />
       </div>
+
       <span className="sr-only">Miedema Property Management</span>
     </div>
   );
