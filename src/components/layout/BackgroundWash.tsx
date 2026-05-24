@@ -2,23 +2,23 @@
  * Paper / Linen texture wash. Sits behind every route.
  * - Flat warm cream base from the design token.
  * - Tiled SVG noise grain for organic paper feel.
- * - Low-opacity warm overlay to unify tone (Kinfolk / editorial vibe).
+ * - Soft warm tonal overlay to unify everything (Kinfolk / editorial vibe).
  */
 
-// Coarser grain — lower frequency = bigger speckles, more visible.
-const NOISE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>
+// Fine paper grain — small speckles, low alpha.
+const NOISE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'>
   <filter id='n'>
-    <feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch' seed='4'/>
-    <feColorMatrix values='0 0 0 0 0.32  0 0 0 0 0.22  0 0 0 0 0.12  0 0 0 0.9 0'/>
+    <feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='4'/>
+    <feColorMatrix values='0 0 0 0 0.30  0 0 0 0 0.20  0 0 0 0 0.10  0 0 0 0.35 0'/>
   </filter>
   <rect width='100%' height='100%' filter='url(#n)'/>
 </svg>`;
 
-// Soft fiber streaks for linen weave feel.
+// Long horizontal fiber strands — linen weave.
 const FIBER_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
   <filter id='f'>
-    <feTurbulence type='turbulence' baseFrequency='0.012 0.9' numOctaves='2' stitchTiles='stitch' seed='2'/>
-    <feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.24  0 0 0 0 0.14  0 0 0 0.5 0'/>
+    <feTurbulence type='turbulence' baseFrequency='0.008 0.7' numOctaves='2' stitchTiles='stitch' seed='2'/>
+    <feColorMatrix values='0 0 0 0 0.34  0 0 0 0 0.22  0 0 0 0 0.12  0 0 0 0.18 0'/>
   </filter>
   <rect width='100%' height='100%' filter='url(#f)'/>
 </svg>`;
@@ -32,17 +32,17 @@ export function BackgroundWash() {
       {/* Flat cream paper base */}
       <div aria-hidden className="fixed inset-0 -z-30 bg-background" />
 
-      {/* Linen fiber streaks */}
+      {/* Linen fiber streaks — very subtle */}
       <div
         aria-hidden
-        className="fixed inset-0 -z-20 opacity-[0.18]"
+        className="fixed inset-0 -z-20 opacity-50"
         style={{ backgroundImage: FIBER_URL, backgroundRepeat: "repeat", backgroundSize: "400px 400px" }}
       />
 
       {/* Paper grain speckle */}
       <div
         aria-hidden
-        className="fixed inset-0 -z-20 opacity-[0.30]"
+        className="fixed inset-0 -z-20 opacity-60"
         style={{ backgroundImage: NOISE_URL, backgroundRepeat: "repeat", backgroundSize: "240px 240px" }}
       />
 
@@ -52,7 +52,7 @@ export function BackgroundWash() {
         className="pointer-events-none fixed inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, oklch(0.94 0.03 78 / 0.35), transparent 55%), radial-gradient(ellipse at 50% 100%, oklch(0.72 0.045 50 / 0.28), transparent 60%)",
+            "radial-gradient(ellipse at 50% 30%, oklch(0.94 0.025 78 / 0.55), oklch(0.88 0.03 75 / 0.35) 70%, oklch(0.82 0.035 65 / 0.25))",
         }}
       />
     </>
