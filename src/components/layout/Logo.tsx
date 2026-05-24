@@ -36,11 +36,11 @@ export function Logo({
         className={`hidden h-14 w-auto shrink-0 object-contain sm:block ${tint}`}
       />
 
-      {/* sm+ : Miedema hugs the house, drifts toward center */}
+      {/* sm+ : Miedema centered between house and Property/Management */}
       <img
         src={miedemaSrc}
         alt="Miedema"
-        className={`hidden h-[140%] w-auto max-w-[55%] -my-4 mr-auto object-contain sm:block ${tint}`}
+        className={`hidden h-[140%] w-auto max-w-[55%] -my-4 mx-auto object-contain sm:block ${tint}`}
       />
 
       {/* sm+ : Property / Management pinned right */}
