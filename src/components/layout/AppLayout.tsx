@@ -9,7 +9,7 @@ import { PageTransition } from "@/components/motion/PageTransition";
 export function AppLayout() {
   const location = useLocation();
   return (
-    <div className="relative flex min-h-screen flex-col bg-background text-foreground">
+    <div className="relative flex min-h-screen flex-col text-foreground">
       <TopContactBar />
       <SiteHeader />
       <main className="flex-1">
