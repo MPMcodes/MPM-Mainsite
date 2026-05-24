@@ -35,14 +35,14 @@ export function BackgroundWash() {
       {/* Linen fiber streaks */}
       <div
         aria-hidden
-        className="fixed inset-0 -z-20 opacity-[0.35] mix-blend-multiply"
+        className="fixed inset-0 -z-20 opacity-[0.18]"
         style={{ backgroundImage: FIBER_URL, backgroundRepeat: "repeat", backgroundSize: "400px 400px" }}
       />
 
       {/* Paper grain speckle */}
       <div
         aria-hidden
-        className="fixed inset-0 -z-20 opacity-[0.55] mix-blend-multiply"
+        className="fixed inset-0 -z-20 opacity-[0.30]"
         style={{ backgroundImage: NOISE_URL, backgroundRepeat: "repeat", backgroundSize: "240px 240px" }}
       />
 
