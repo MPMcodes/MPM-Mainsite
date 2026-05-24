@@ -25,8 +25,8 @@ export function BackgroundWash() {
       {/* Tiled noise grain — the linen/paper texture */}
       <div
         aria-hidden
-        className="fixed inset-0 -z-20 opacity-[0.22] mix-blend-multiply"
-        style={{ backgroundImage: NOISE_URL, backgroundRepeat: "repeat", backgroundSize: "220px 220px" }}
+        className="fixed inset-0 -z-20 opacity-[0.45] mix-blend-multiply"
+        style={{ backgroundImage: NOISE_URL, backgroundRepeat: "repeat", backgroundSize: "180px 180px" }}
       />
 
       {/* Warm tonal overlay — pulls everything into the same Kinfolk warmth */}
