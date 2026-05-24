@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  Megaphone,
-  ShieldCheck,
-  Wallet,
+  Home as HomeIcon,
   Wrench,
-  FolderLock,
+  Wallet,
+  MessageCircle,
+  KeyRound,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -19,87 +20,85 @@ const HERO_PHOTO =
 const QUICK_LINKS = [
   {
     to: "/properties",
-    title: "Our Rentals",
-    body: "Looking for a home to rent? View our listings to get started.",
+    title: "Available Homes",
+    body: "Browse our current rentals and find the one that feels like yours.",
   },
   {
     to: "/properties",
-    title: "Our Services",
-    body: "Full-service management or à la carte — tailored to you.",
+    title: "Book a Showing",
+    body: "Pick a time that works for you — in person or over a video tour.",
   },
   {
-    to: "/properties",
-    title: "List Your Property",
-    body: "Get started now and reclaim your peace of mind.",
+    to: "/residents",
+    title: "Current Residents",
+    body: "Pay rent, request maintenance, and reach our team anytime.",
   },
 ];
 
 const PILLARS = [
   {
-    title: "Our Rental Manager Systems",
+    title: "A Home That's Looked After",
     image: rentalManagerSystemsImage,
-    body: "We keep the lines of communication wide open. As a family-run firm, we offer the personal touch many enjoy. When an emergency comes up — and they always will — there is peace of mind in knowing exactly who to call and what the plan is. Our paperless systems give owners portal access to documents, photos, and accounting from anywhere.",
+    body: "We're a family-run team, not a call center. When something comes up — and it always does — you know exactly who to call and what the plan is. Communication is open, friendly, and quick, because the people answering the phone are the same people who care for your home.",
   },
   {
-    title: "Property Maintenance Standards",
+    title: "Maintenance Done Right",
     image: maintenanceStandardsImage,
-    body: "Maintenance is the most time-consuming piece of managing a property — and every home is unique. We customize the way we communicate so every owner stays informed, with budgets discussed and before-and-after photos shared. Because we don't profit from maintenance, vendor discounts pass straight through to you.",
+    body: "Every home is unique, and we treat it that way. Our in-house team handles requests promptly, with photos and updates as work progresses. Because we don't profit from maintenance markups, repairs stay fair and transparent — focused on keeping your home comfortable.",
   },
   {
-    title: "Marketing & Leasing of Properties",
+    title: "Move-In You Can Look Forward To",
     image:
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80",
-    body: "A professional listing adds value and demand for your rental. We use a wide-angle lens and shoot 40–100 photos per home, syndicating to every major service. Our leasing agent provides weekly updates on inquiries, showings, and applications — placing high-quality residents in well-kept homes.",
+    body: "Clear leases, friendly walk-throughs, and a home that's truly ready on day one. We're with you from your first showing through every renewal — making sure settling in feels easy and welcoming.",
   },
 ];
 
 const SERVICES = [
   {
-    icon: Megaphone,
-    title: "Marketing",
-    body: "Listings that stand out from the crowd and help attract top residents and rent. Some of the lowest local vacancy rates in the industry.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Resident Screening",
-    body: "Qualifying standards that protect your investment from damage, lost income, and liability — fair to every applicant under housing law.",
-  },
-  {
-    icon: Wallet,
-    title: "Rent Collection",
-    body: "Our online payment portal makes it easy for residents to pay on time each month. Faster transfers of funds, fewer late payments.",
+    icon: HomeIcon,
+    title: "Well-Kept Homes",
+    body: "Move into a home that's been cleaned, inspected, and cared for — never rushed to market.",
   },
   {
     icon: Wrench,
     title: "24/7 Maintenance",
-    body: "An in-house supervisor by day and an after-hours team by night — your residents stay comfortable around the clock.",
+    body: "An in-house supervisor by day and an after-hours team by night, so you stay comfortable around the clock.",
   },
   {
-    icon: FolderLock,
-    title: "Management Portal",
-    body: "Accounting, tax documents, communications and more in one online system with bank-grade security and redundancy.",
+    icon: Wallet,
+    title: "Easy Online Rent",
+    body: "A simple online portal makes paying rent quick, secure, and on your schedule.",
   },
-];
-
-const SOLUTIONS = [
   {
-    title: "Turn-Key Services",
-    body: "Getting your home rent-ready doesn't have to be a hassle. We oversee the process from start to finish using our trusted vendor network.",
+    icon: MessageCircle,
+    title: "Real People, Real Answers",
+    body: "Reach our family team directly — by phone, email, or live chat. No tickets disappearing into the void.",
+  },
+  {
+    icon: KeyRound,
+    title: "Smooth Move-In",
+    body: "Clear paperwork, a friendly walk-through, and keys handed over by someone who knows the home.",
+  },
+  {
+    icon: Sparkles,
+    title: "Long-Term Care",
+    body: "We invest in the homes you live in — so renewing feels like settling in deeper, not starting over.",
   },
 ];
 
 const POSTS = [
   {
-    title: "Rental Assistance Programs: How to Keep Residents Housed",
-    body: "Rent has never been just about money — it's about offering someone a place where they feel they belong, in a city they're trying to call home.",
+    title: "Settling In: A Resident's Guide to Your First Week",
+    body: "From utilities to the quirks of an old furnace, here's what to set up first to make a new place feel like home.",
   },
   {
-    title: "Common Filing Mistakes That Delay Eviction Proceedings",
-    body: "Eviction is rarely delayed because a landlord lacks a valid reason. It is delayed due to minor procedural mistakes that compound quickly.",
+    title: "Rental Assistance Programs: Resources for Residents",
+    body: "If life throws a curveball, you're not alone. Here are the programs and steps we walk through with our residents.",
   },
   {
-    title: "How Smart Rent Collection Practices Benefit Landlords",
-    body: "In real estate, cash flow plays the lead role — and just like a hit song needs perfect timing, your rental income depends on it.",
+    title: "How to Submit a Maintenance Request That Gets Fixed Fast",
+    body: "A few details — and a photo or two — go a long way. Here's exactly what helps our team show up prepared.",
   },
 ];
 
@@ -120,24 +119,24 @@ export default function Home() {
 
         <div className="mx-auto flex min-h-[80vh] max-w-5xl flex-col items-center justify-center px-6 py-24 text-center lg:px-10">
           <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
-            Family-Run Property Management
+            Family-Run · For Our Residents
           </p>
           <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Looking for Quality
+            Looking for a Home
             <br />
-            Residential Property Management?
+            That Feels Cared For?
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
-            Miedema is a family-run property management company guided by the
-            principles of stewardship, communication, and craft — caring for
-            each home as if it were our own.
+            Miedema is a family-owned residential community guided by stewardship,
+            communication, and craft — caring for every home, and every resident,
+            as if they were our own.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Button asChild size="lg" className="uppercase tracking-[0.18em] text-xs">
-              <Link to="/properties">Book a Showing</Link>
+              <Link to="/properties">View Available Homes</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="uppercase tracking-[0.18em] text-xs">
-              <Link to="/properties">View Rentals</Link>
+              <Link to="/properties">Book a Showing</Link>
             </Button>
           </div>
         </div>
@@ -168,10 +167,10 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
-            What separates us
+            What it's like to live here
           </p>
           <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-            From other property management companies.
+            More than a rental. A place that's looked after.
           </h2>
         </div>
 
@@ -209,19 +208,18 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
-              Passionate management staff
+              For our residents
             </p>
             <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-              The services behind a well-kept home.
+              The little things behind a well-kept home.
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground">
-              We&apos;ll never try to sell you a service — we don&apos;t even have a
-              sales team. We just believe in being good neighbors and loving
-              what we do.
+              We don&apos;t have a sales team — we&apos;re just a family that loves
+              what we do and the neighbors we get to do it with.
             </p>
             <div className="mt-7">
               <Button asChild size="lg" className="uppercase tracking-[0.18em] text-xs">
-                <Link to="/properties">Book a Showing</Link>
+                <Link to="/properties">Browse Available Homes</Link>
               </Button>
             </div>
           </div>
@@ -242,7 +240,7 @@ export default function Home() {
                     {s.body}
                   </p>
                   <Link
-                    to="/properties"
+                    to="/residents"
                     className="mt-5 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-[0.2em] text-accent hover:text-primary"
                   >
                     Learn more <ArrowUpRight className="size-3" />
@@ -254,30 +252,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- FLEXIBLE SOLUTIONS ---------- */}
-      <section className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
-            Flexible solutions
-          </p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-            Fit to your unique needs.
-          </h2>
-        </div>
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {SOLUTIONS.map((s) => (
-            <article key={s.title} className={`${cardBase} p-8 md:col-start-2`}>
-              <h3 className="font-serif text-2xl font-semibold text-foreground">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {s.body}
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       {/* ---------- SHOWING CTA ---------- */}
       <section className="bg-sidebar text-sidebar-foreground">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-2 lg:px-10">
@@ -286,16 +260,16 @@ export default function Home() {
               We&apos;re here to help
             </p>
             <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-sidebar-foreground md:text-5xl">
-              Interest in an active listing? Book a personal showing here or with our live chat!
+              See a home you love? Book a personal showing — or just say hi in the chat.
             </h2>
           </div>
           <div className="flex flex-col gap-3 self-center rounded-2xl border border-sidebar-border bg-sidebar-accent/40 p-6 sm:p-8">
             <p className="text-sm leading-relaxed text-sidebar-foreground/75">
               Browse our current listings and reserve a time that works for you,
-              or message our team directly in the chat.
+              or message our family team directly.
             </p>
             <Button asChild size="lg" className="mt-2 uppercase tracking-[0.18em] text-xs">
-              <Link to="/properties">View Active Listings</Link>
+              <Link to="/properties">View Available Homes</Link>
             </Button>
           </div>
         </div>
@@ -309,7 +283,7 @@ export default function Home() {
               From the journal
             </p>
             <h2 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-              Notes from the field.
+              Notes for our residents.
             </h2>
           </div>
           <Link
