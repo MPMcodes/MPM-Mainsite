@@ -55,7 +55,7 @@ export function SiteHeader() {
                   end={item.to === "/"}
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-wide transition-colors lg:py-2 ${
+                    `flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-wide transition-colors ${
                       isActive
                         ? "bg-muted text-accent"
                         : "text-foreground/80 hover:bg-muted hover:text-accent"
