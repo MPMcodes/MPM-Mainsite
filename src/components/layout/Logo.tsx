@@ -5,8 +5,8 @@ import managementSrc from "@/assets/logo-management.png";
 import mobileHeaderSrc from "@/assets/logo-header-mobile.png";
 
 /**
- * Miedema header lockup. On mobile, renders the bordered combined header
- * artwork. On sm+ screens, composes the individual logo pieces.
+ * Miedema header lockup. Mobile uses a single tight composite that stays
+ * legible against the dark hero; sm+ composes the individual pieces.
  */
 export function Logo({
   className = "",
@@ -19,23 +19,21 @@ export function Logo({
 
   return (
     <div
-      className={`flex h-24 w-full items-center justify-between gap-3 px-0 sm:h-20 sm:px-5 sm:gap-3 ${className}`}
+      className={`flex h-14 w-full items-center justify-center gap-3 px-0 sm:h-20 sm:justify-between sm:px-5 ${className}`}
     >
-      {/* Mobile: single header image (no border), full height */}
+      {/* Mobile: tight single-image lockup, fills bar height */}
       <img
         src={mobileHeaderSrc}
         alt="Miedema Property Management"
         className={`block h-full w-auto max-w-full object-contain sm:hidden ${tint}`}
       />
 
-
-
       {/* sm+ : composed lockup */}
       <img
         src={houseSrc}
         alt=""
         aria-hidden="true"
-        className={`hidden h-10 w-auto shrink-0 object-contain sm:block sm:h-14 ${tint}`}
+        className={`hidden h-14 w-auto shrink-0 object-contain sm:block ${tint}`}
       />
       <img
         src={miedemaSrc}
@@ -46,12 +44,12 @@ export function Logo({
         <img
           src={propertySrc}
           alt="Property"
-          className={`h-3 w-auto object-contain sm:h-4 ${tint}`}
+          className={`h-4 w-auto object-contain ${tint}`}
         />
         <img
           src={managementSrc}
           alt="Management"
-          className={`h-3 w-auto object-contain sm:h-4 ${tint}`}
+          className={`h-4 w-auto object-contain ${tint}`}
         />
       </div>
       <span className="sr-only">Miedema Property Management</span>
