@@ -17,9 +17,10 @@ export function SiteFooter() {
             />
           </div>
           <p className="text-sm text-sidebar-foreground/70 leading-relaxed">
-            Residential property management for owners and residents
-            who care about the details.
+            A family-run residential community caring for our residents
+            and the homes we call our own.
           </p>
+
         </div>
 
 
