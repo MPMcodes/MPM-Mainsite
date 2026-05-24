@@ -44,9 +44,10 @@ export function SiteHeader() {
         <nav
           id="primary-nav"
           aria-label="Primary"
-          className="border-t border-border/50 bg-[oklch(0.98_0.012_80/0.85)] backdrop-blur-2xl backdrop-saturate-200"
+          className="absolute left-0 right-0 top-full border-t border-border/50 bg-[oklch(0.98_0.012_80/0.95)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"
         >
-          <ul className="mx-auto flex max-w-7xl flex-col gap-1 px-3 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-center lg:gap-2 lg:px-10">
+          <ul className="flex flex-col gap-1 px-3 py-3 sm:px-6">
+
             {NAV_ITEMS.map((item) => (
               <li key={item.to}>
                 <NavLink
