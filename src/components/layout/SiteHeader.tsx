@@ -9,7 +9,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border/60 bg-background/90 backdrop-blur-md">
+    <header className="nav-mesh-bg nav-grain sticky top-0 z-30 border-b border-border/60 backdrop-blur-md">
       <div className="flex items-center gap-2 px-3 py-2">
         <ThemeToggle />
         <Link to="/" className="flex flex-1 justify-center">
