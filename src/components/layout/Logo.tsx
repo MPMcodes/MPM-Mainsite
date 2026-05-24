@@ -2,10 +2,11 @@ import houseSrc from "@/assets/logo-house.png";
 import miedemaSrc from "@/assets/logo-miedema.png";
 import propertySrc from "@/assets/logo-property.png";
 import managementSrc from "@/assets/logo-management.png";
+import mobileHeaderSrc from "@/assets/logo-header-mobile.png";
 
 /**
- * Miedema header lockup. Uses the same crisp source images on every
- * breakpoint so the brown ink stays saturated; only the sizing changes.
+ * Miedema header lockup. Mobile uses a single tight composite that stays
+ * legible against the dark hero; sm+ composes the individual pieces.
  */
 export function Logo({
   className = "",
@@ -18,29 +19,37 @@ export function Logo({
 
   return (
     <div
-      className={`flex h-14 w-full items-center justify-center gap-2 px-0 sm:h-20 sm:justify-between sm:gap-3 sm:px-5 ${className}`}
+      className={`flex h-14 w-full items-center justify-center gap-3 px-0 sm:h-20 sm:justify-between sm:px-5 ${className}`}
     >
+      {/* Mobile: tight single-image lockup, fills bar height */}
+      <img
+        src={mobileHeaderSrc}
+        alt="Miedema Property Management"
+        className={`block h-full w-auto max-w-full object-contain sm:hidden ${tint}`}
+      />
+
+      {/* sm+ : composed lockup */}
       <img
         src={houseSrc}
         alt=""
         aria-hidden="true"
-        className={`h-full w-auto shrink-0 object-contain sm:h-14 ${tint}`}
+        className={`hidden h-14 w-auto shrink-0 object-contain sm:block ${tint}`}
       />
       <img
         src={miedemaSrc}
         alt="Miedema"
-        className={`h-[150%] w-auto max-w-[60%] -my-2 object-contain sm:h-[140%] sm:max-w-[75%] sm:-my-4 ${tint}`}
+        className={`hidden h-[140%] w-auto max-w-[75%] -my-4 object-contain sm:block ${tint}`}
       />
-      <div className="flex shrink-0 flex-col items-end gap-0.5 sm:gap-1">
+      <div className="hidden shrink-0 flex-col items-end gap-1 sm:flex">
         <img
           src={propertySrc}
           alt="Property"
-          className={`h-2.5 w-auto object-contain sm:h-4 ${tint}`}
+          className={`h-4 w-auto object-contain ${tint}`}
         />
         <img
           src={managementSrc}
           alt="Management"
-          className={`h-2.5 w-auto object-contain sm:h-4 ${tint}`}
+          className={`h-4 w-auto object-contain ${tint}`}
         />
       </div>
       <span className="sr-only">Miedema Property Management</span>
