@@ -111,7 +111,8 @@ export function SiteHeader() {
       <nav
         id="primary-nav"
         aria-label="Primary"
-        className="fixed right-0 top-14 bottom-0 z-40 w-64 max-w-[80vw] overflow-hidden border-l border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,-8px_0_24px_-12px_oklch(0.235_0.028_50/0.3)] sm:hidden"
+        style={{ top: headerH }}
+        className="fixed right-0 bottom-0 z-40 w-64 max-w-[80vw] overflow-hidden border-l border-t border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,-8px_0_24px_-12px_oklch(0.235_0.028_50/0.3)] sm:hidden"
       >
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <HeaderLeaves count={14} />
