@@ -110,6 +110,14 @@ const cardBase =
   "rounded-2xl border border-border/60 bg-card text-card-foreground shadow-sm";
 
 export default function Home() {
+  const form = useForm<InquiryValues>({
+    resolver: zodResolver(inquirySchema),
+    defaultValues: { name: "", email: "", phone: "", message: "" },
+  });
+  const onSubmit = (_values: InquiryValues) => {
+    // TODO: wire to CRM intake
+    window.location.href = CRM_URL;
+  };
   return (
     <div>
       {/* ---------- HERO ---------- */}
