@@ -9,20 +9,32 @@ export function BottomNav() {
       <ul className="mx-auto flex max-w-md items-stretch justify-between px-2 py-2">
         {ITEMS.map((item) => (
           <li key={item.to} className="flex-1">
-            <NavLink
-              to={item.to}
-              end={item.to === "/"}
-              className={({ isActive }) =>
-                `flex flex-col items-center gap-1 rounded-lg px-2 py-2 text-[11px] font-medium transition-all duration-200 ${
-                  isActive
-                    ? "-translate-y-0.5 text-accent"
-                    : "text-muted-foreground hover:text-foreground"
-                }`
-              }
-            >
-              <item.icon className="size-5" />
-              <span>{item.label}</span>
-            </NavLink>
+            {item.external ? (
+              <a
+                href={item.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-1 rounded-lg px-2 py-2 text-[11px] font-medium text-muted-foreground transition-all duration-200 hover:text-foreground"
+              >
+                <item.icon className="size-5" />
+                <span>{item.label}</span>
+              </a>
+            ) : (
+              <NavLink
+                to={item.to}
+                end={item.to === "/"}
+                className={({ isActive }) =>
+                  `flex flex-col items-center gap-1 rounded-lg px-2 py-2 text-[11px] font-medium transition-all duration-200 ${
+                    isActive
+                      ? "-translate-y-0.5 text-accent"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`
+                }
+              >
+                <item.icon className="size-5" />
+                <span>{item.label}</span>
+              </NavLink>
+            )}
           </li>
         ))}
       </ul>
