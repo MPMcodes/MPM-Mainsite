@@ -48,41 +48,43 @@ export function SiteHeader() {
         <nav
           id="primary-nav"
           aria-label="Primary"
-          className="absolute left-0 right-0 top-full z-20 border-t border-border/50 bg-[oklch(0.98_0.012_80/0.95)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"
+          className="absolute left-0 right-0 top-full z-20 border-t border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"
         >
           <ul className="flex flex-row items-center gap-1 overflow-x-auto whitespace-nowrap px-3 py-2 sm:justify-center sm:px-6">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.to} className="shrink-0">
-                {item.external ? (
-                  <a
-                    href={item.to}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium tracking-wide transition-colors text-foreground/80 hover:bg-muted hover:text-accent"
-                  >
-                    <item.icon className="size-4" />
-                    {item.label}
-                  </a>
-                ) : (
-                  <NavLink
-                    to={item.to}
-                    end={item.to === "/"}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      `flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                        isActive
-                          ? "bg-muted text-accent"
-                          : "text-foreground/80 hover:bg-muted hover:text-accent"
-                      }`
-                    }
-                  >
-                    <item.icon className="size-4" />
-                    {item.label}
-                  </NavLink>
-                )}
-              </li>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const itemClass =
+                "flex items-center rounded-md px-3 py-2 font-serif text-sm uppercase tracking-[0.2em] transition-colors";
+              return (
+                <li key={item.to} className="shrink-0">
+                  {item.external ? (
+                    <a
+                      href={item.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setOpen(false)}
+                      className={`${itemClass} text-foreground/80 hover:bg-muted/40 hover:text-accent`}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <NavLink
+                      to={item.to}
+                      end={item.to === "/"}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        `${itemClass} ${
+                          isActive
+                            ? "text-accent"
+                            : "text-foreground/80 hover:bg-muted/40 hover:text-accent"
+                        }`
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
       )}
