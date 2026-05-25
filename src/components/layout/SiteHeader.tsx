@@ -75,7 +75,7 @@ export function SiteHeader() {
                         `${itemClass} ${
                           isActive
                             ? "text-accent"
-                            : "text-foreground/80 hover:bg-muted/40 hover:text-accent"
+                            : "hover:bg-muted/40 hover:text-accent"
                         }`
                       }
                     >
