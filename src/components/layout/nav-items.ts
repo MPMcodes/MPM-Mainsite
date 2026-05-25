@@ -13,6 +13,6 @@ export const RESIDENT_PORTAL_URL = "https://portal.miedemapropertymanagement.com
 export const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Home", icon: Home },
   { to: "/properties", label: "Properties", icon: Building2 },
-  { to: "/journal", label: "What We're Up To", icon: FileText },
+  { to: "/journal", label: "Blog", icon: FileText },
   { to: RESIDENT_PORTAL_URL, label: "Residents", icon: Users, external: true },
 ];
