@@ -53,7 +53,7 @@ export function SiteHeader() {
           <ul className="flex flex-row items-center gap-1 overflow-x-auto whitespace-nowrap px-3 py-2 sm:justify-center sm:px-6">
             {NAV_ITEMS.map((item) => {
               const itemClass =
-                "flex items-center rounded-md px-3 py-2 font-serif text-sm uppercase tracking-[0.2em] transition-colors";
+                "flex items-center rounded-md px-3 py-2 font-serif text-sm uppercase tracking-[0.2em] text-primary transition-colors";
               return (
                 <li key={item.to} className="shrink-0">
                   {item.external ? (
@@ -62,7 +62,7 @@ export function SiteHeader() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setOpen(false)}
-                      className={`${itemClass} text-foreground/80 hover:bg-muted/40 hover:text-accent`}
+                      className={`${itemClass} hover:bg-muted/40 hover:text-accent`}
                     >
                       {item.label}
                     </a>
@@ -75,7 +75,7 @@ export function SiteHeader() {
                         `${itemClass} ${
                           isActive
                             ? "text-accent"
-                            : "text-foreground/80 hover:bg-muted/40 hover:text-accent"
+                            : "hover:bg-muted/40 hover:text-accent"
                         }`
                       }
                     >
