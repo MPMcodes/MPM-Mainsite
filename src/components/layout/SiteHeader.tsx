@@ -48,7 +48,7 @@ export function SiteHeader() {
         <nav
           id="primary-nav"
           aria-label="Primary"
-          className="absolute left-0 right-0 top-full z-20 border-t border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"
+          className="absolute left-0 right-0 top-full z-20 border-b border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"
         >
           <ul className="flex flex-row items-center gap-1 overflow-x-auto whitespace-nowrap px-3 py-2 sm:justify-center sm:px-6">
             {NAV_ITEMS.map((item) => {
