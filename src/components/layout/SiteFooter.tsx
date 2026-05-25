@@ -29,7 +29,20 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2 text-sm text-sidebar-foreground/75">
             {NAV_ITEMS.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="hover:text-sidebar-primary">{item.label}</Link>
+                {item.external ? (
+                  <a
+                    href={item.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-sidebar-primary"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link to={item.to} className="hover:text-sidebar-primary">
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
