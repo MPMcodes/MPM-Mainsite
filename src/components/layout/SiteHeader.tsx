@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { NAV_ITEMS } from "./nav-items";
+import { HeaderLeaves } from "./HeaderLeaves";
 
 /**
  * Frosted drawer header (mobile-first).
