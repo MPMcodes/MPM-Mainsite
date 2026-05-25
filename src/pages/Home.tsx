@@ -17,6 +17,8 @@ import rentalManagerSystemsImage from "@/assets/rental-manager-systems.png";
 const HERO_PHOTO =
   "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=2400&q=80";
 
+const RESIDENT_PORTAL_URL = "https://portal.miedemapropertymanagement.com";
+
 const QUICK_LINKS = [
   {
     to: "/properties",
@@ -29,9 +31,10 @@ const QUICK_LINKS = [
     body: "Pick a time that works for you — in person or over a video tour.",
   },
   {
-    to: "/residents",
+    to: RESIDENT_PORTAL_URL,
     title: "Current Residents",
     body: "Pay rent, request maintenance, and reach our team anytime.",
+    external: true,
   },
 ];
 
