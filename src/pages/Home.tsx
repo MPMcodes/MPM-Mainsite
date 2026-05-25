@@ -152,15 +152,27 @@ export default function Home() {
               whileHover={{ y: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 24 }}
             >
-              <Link to={q.to} className={`${cardBase} group flex items-start justify-between gap-4 p-7`}>
-                <div>
-                  <h3 className="font-serif text-2xl font-semibold text-foreground">{q.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{q.body}</p>
-                </div>
-                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
-                  <ArrowUpRight className="size-4" />
-                </span>
-              </Link>
+              {q.external ? (
+                <a href={q.to} target="_blank" rel="noopener noreferrer" className={`${cardBase} group flex items-start justify-between gap-4 p-7`}>
+                  <div>
+                    <h3 className="font-serif text-2xl font-semibold text-foreground">{q.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{q.body}</p>
+                  </div>
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
+                    <ArrowUpRight className="size-4" />
+                  </span>
+                </a>
+              ) : (
+                <Link to={q.to} className={`${cardBase} group flex items-start justify-between gap-4 p-7`}>
+                  <div>
+                    <h3 className="font-serif text-2xl font-semibold text-foreground">{q.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{q.body}</p>
+                  </div>
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
+                    <ArrowUpRight className="size-4" />
+                  </span>
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>
