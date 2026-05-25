@@ -302,37 +302,59 @@ export default function Home() {
             </p>
             <h2 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
               Notes for our residents.
-            </h2>
-          </div>
-          <Link
-            to="/journal"
-            className="inline-flex items-center gap-1 text-xs font-medium uppercase tracking-[0.2em] text-accent hover:text-primary"
-          >
-            All posts <ArrowUpRight className="size-3" />
-          </Link>
+      {/* ---------- NEW CLIENT INQUIRY FORM ---------- */}
+      <section className="mx-auto max-w-3xl px-6 py-24 lg:px-10">
+        <div className="text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
+            New here?
+          </p>
+          <h2 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+            Interested? Give us a chat.
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            Tell us a little about what you're looking for and our family team will reach out personally.
+          </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {POSTS.map((post) => (
-            <article key={post.title} className={`${cardBase} overflow-hidden`}>
-              <div className="aspect-[16/10] bg-muted" />
-              <div className="p-7">
-                <h3 className="font-serif text-xl font-semibold leading-snug text-foreground">
-                  {post.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {post.body}
-                </p>
-                <Link
-                  to="/journal"
-                  className="mt-5 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-[0.2em] text-accent hover:text-primary"
-                >
-                  Read more <ArrowUpRight className="size-3" />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          noValidate
+          className={`${cardBase} mt-10 grid gap-5 p-7 sm:p-9`}
+        >
+          <div className="grid gap-2">
+            <Label htmlFor="inq-name">Name</Label>
+            <Input id="inq-name" autoComplete="name" maxLength={100} {...form.register("name")} />
+            {form.formState.errors.name && (
+              <p className="text-xs text-destructive">{form.formState.errors.name.message}</p>
+            )}
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-2">
+              <Label htmlFor="inq-email">Email</Label>
+              <Input id="inq-email" type="email" autoComplete="email" maxLength={255} {...form.register("email")} />
+              {form.formState.errors.email && (
+                <p className="text-xs text-destructive">{form.formState.errors.email.message}</p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="inq-phone">Phone <span className="text-muted-foreground">(optional)</span></Label>
+              <Input id="inq-phone" type="tel" autoComplete="tel" maxLength={30} {...form.register("phone")} />
+            </div>
+          </div>
+
+          <div className="grid gap-2">
+            <Label htmlFor="inq-message">What are you looking for?</Label>
+            <Textarea id="inq-message" rows={5} maxLength={1000} {...form.register("message")} />
+            {form.formState.errors.message && (
+              <p className="text-xs text-destructive">{form.formState.errors.message.message}</p>
+            )}
+          </div>
+
+          <Button type="submit" size="lg" className="mt-2 justify-self-start uppercase tracking-[0.18em] text-xs">
+            Send Inquiry <ArrowUpRight className="ml-1 size-4" />
+          </Button>
+        </form>
       </section>
     </div>
   );
