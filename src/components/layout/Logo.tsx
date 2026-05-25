@@ -33,27 +33,27 @@ export function Logo({
         src={houseSrc}
         alt=""
         aria-hidden="true"
-        className={`hidden h-14 w-auto shrink-0 object-contain sm:block ${tint}`}
+        className={`hidden h-20 w-auto shrink-0 object-contain sm:block ${tint}`}
       />
 
       {/* sm+ : Miedema centered between house and Property/Management */}
       <img
         src={miedemaSrc}
         alt="Miedema"
-        className={`hidden h-[140%] w-auto max-w-[55%] -my-4 mx-auto object-contain sm:block ${tint}`}
+        className={`hidden h-[110%] w-auto max-w-[45%] -my-2 mx-auto object-contain sm:block ${tint}`}
       />
 
       {/* sm+ : Property / Management pinned right */}
-      <div className="hidden shrink-0 flex-col items-end gap-1 sm:flex">
+      <div className="hidden shrink-0 flex-col items-end gap-1.5 sm:flex">
         <img
           src={propertySrc}
           alt="Property"
-          className={`h-4 w-auto object-contain ${tint}`}
+          className={`h-7 w-auto object-contain ${tint}`}
         />
         <img
           src={managementSrc}
           alt="Management"
-          className={`h-4 w-auto object-contain ${tint}`}
+          className={`h-7 w-auto object-contain ${tint}`}
         />
       </div>
 
