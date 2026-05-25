@@ -254,12 +254,14 @@ export default function Home() {
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {s.body}
                   </p>
-                  <Link
-                    to="/residents"
+                  <a
+                    href={RESIDENT_PORTAL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-5 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-[0.2em] text-accent hover:text-primary"
                   >
                     Learn more <ArrowUpRight className="size-3" />
-                  </Link>
+                  </a>
                 </motion.article>
               </StaggerItem>
             ))}
