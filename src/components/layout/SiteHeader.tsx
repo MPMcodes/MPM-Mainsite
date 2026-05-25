@@ -53,7 +53,7 @@ export function SiteHeader() {
           <ul className="flex flex-row items-center gap-1 overflow-x-auto whitespace-nowrap px-3 py-2 sm:justify-center sm:px-6">
             {NAV_ITEMS.map((item) => {
               const itemClass =
-                "flex items-center rounded-md px-3 py-2 font-serif text-sm uppercase tracking-[0.2em] text-primary transition-colors";
+                "flex items-center rounded-md px-3 py-2 font-serif text-sm uppercase tracking-[0.2em] text-[oklch(0.28_0.04_50)] transition-colors";
               return (
                 <li key={item.to} className="shrink-0">
                   {item.external ? (
