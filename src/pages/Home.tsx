@@ -293,15 +293,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- JOURNAL TEASERS ---------- */}
-      <section className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
-              From the journal
-            </p>
-            <h2 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-              Notes for our residents.
       {/* ---------- NEW CLIENT INQUIRY FORM ---------- */}
       <section className="mx-auto max-w-3xl px-6 py-24 lg:px-10">
         <div className="text-center">
