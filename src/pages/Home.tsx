@@ -90,20 +90,15 @@ const SERVICES = [
   },
 ];
 
-const POSTS = [
-  {
-    title: "Settling In: A Resident's Guide to Your First Week",
-    body: "From utilities to the quirks of an old furnace, here's what to set up first to make a new place feel like home.",
-  },
-  {
-    title: "Rental Assistance Programs: Resources for Residents",
-    body: "If life throws a curveball, you're not alone. Here are the programs and steps we walk through with our residents.",
-  },
-  {
-    title: "How to Submit a Maintenance Request That Gets Fixed Fast",
-    body: "A few details — and a photo or two — go a long way. Here's exactly what helps our team show up prepared.",
-  },
-];
+const CRM_URL = "#"; // TODO: replace with CRM intake endpoint
+
+const inquirySchema = z.object({
+  name: z.string().trim().min(1, "Please enter your name").max(100),
+  email: z.string().trim().email("Enter a valid email").max(255),
+  phone: z.string().trim().max(30).optional().or(z.literal("")),
+  message: z.string().trim().min(1, "Tell us a little about what you're looking for").max(1000),
+});
+type InquiryValues = z.infer<typeof inquirySchema>;
 
 const cardBase =
   "rounded-2xl border border-border/60 bg-card text-card-foreground shadow-sm";
