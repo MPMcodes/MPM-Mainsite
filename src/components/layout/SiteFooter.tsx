@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
-import { NAV_ITEMS } from "./nav-items";
+import { NAV_ITEMS, RESIDENT_PORTAL_URL } from "./nav-items";
 import houseSrc from "@/assets/miedema-house.jpg";
 
 export function SiteFooter() {
@@ -29,7 +29,20 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2 text-sm text-sidebar-foreground/75">
             {NAV_ITEMS.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="hover:text-sidebar-primary">{item.label}</Link>
+                {item.external ? (
+                  <a
+                    href={item.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-sidebar-primary"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link to={item.to} className="hover:text-sidebar-primary">
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -48,7 +61,7 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-lg text-sidebar-foreground">Portals</h4>
           <ul className="mt-4 space-y-2 text-sm text-sidebar-foreground/75">
-            <li><Link to="/residents" className="hover:text-sidebar-primary">Resident Portal</Link></li>
+            <li><a href={RESIDENT_PORTAL_URL} target="_blank" rel="noopener noreferrer" className="hover:text-sidebar-primary">Resident Portal</a></li>
           </ul>
         </div>
       </div>

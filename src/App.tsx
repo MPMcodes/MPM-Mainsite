@@ -18,7 +18,7 @@ export default function App() {
       <Route element={<AppLayout />}>
         <Route index element={<Home />} />
         <Route path="properties" element={<ComingSoon title="Portfolio" />} />
-        <Route path="residents" element={<ComingSoon title="Resident Portal" />} />
+        
         
         <Route path="journal" element={<ComingSoon title="The Journal" />} />
         <Route path="admin" element={<AdminShell />} />

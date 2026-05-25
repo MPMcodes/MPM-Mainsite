@@ -50,21 +50,34 @@ export function SiteHeader() {
 
             {NAV_ITEMS.map((item) => (
               <li key={item.to}>
-                <NavLink
-                  to={item.to}
-                  end={item.to === "/"}
-                  onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-wide transition-colors ${
-                      isActive
-                        ? "bg-muted text-accent"
-                        : "text-foreground/80 hover:bg-muted hover:text-accent"
-                    }`
-                  }
-                >
-                  <item.icon className="size-4" />
-                  {item.label}
-                </NavLink>
+                {item.external ? (
+                  <a
+                    href={item.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-wide transition-colors text-foreground/80 hover:bg-muted hover:text-accent"
+                  >
+                    <item.icon className="size-4" />
+                    {item.label}
+                  </a>
+                ) : (
+                  <NavLink
+                    to={item.to}
+                    end={item.to === "/"}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      `flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-wide transition-colors ${
+                        isActive
+                          ? "bg-muted text-accent"
+                          : "text-foreground/80 hover:bg-muted hover:text-accent"
+                      }`
+                    }
+                  >
+                    <item.icon className="size-4" />
+                    {item.label}
+                  </NavLink>
+                )}
               </li>
             ))}
           </ul>

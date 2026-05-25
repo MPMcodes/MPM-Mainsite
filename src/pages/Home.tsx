@@ -17,6 +17,8 @@ import rentalManagerSystemsImage from "@/assets/rental-manager-systems.png";
 const HERO_PHOTO =
   "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=2400&q=80";
 
+const RESIDENT_PORTAL_URL = "https://portal.miedemapropertymanagement.com";
+
 const QUICK_LINKS = [
   {
     to: "/properties",
@@ -29,9 +31,10 @@ const QUICK_LINKS = [
     body: "Pick a time that works for you — in person or over a video tour.",
   },
   {
-    to: "/residents",
+    to: RESIDENT_PORTAL_URL,
     title: "Current Residents",
     body: "Pay rent, request maintenance, and reach our team anytime.",
+    external: true,
   },
 ];
 
@@ -149,15 +152,27 @@ export default function Home() {
               whileHover={{ y: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 24 }}
             >
-              <Link to={q.to} className={`${cardBase} group flex items-start justify-between gap-4 p-7`}>
-                <div>
-                  <h3 className="font-serif text-2xl font-semibold text-foreground">{q.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{q.body}</p>
-                </div>
-                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
-                  <ArrowUpRight className="size-4" />
-                </span>
-              </Link>
+              {q.external ? (
+                <a href={q.to} target="_blank" rel="noopener noreferrer" className={`${cardBase} group flex items-start justify-between gap-4 p-7`}>
+                  <div>
+                    <h3 className="font-serif text-2xl font-semibold text-foreground">{q.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{q.body}</p>
+                  </div>
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
+                    <ArrowUpRight className="size-4" />
+                  </span>
+                </a>
+              ) : (
+                <Link to={q.to} className={`${cardBase} group flex items-start justify-between gap-4 p-7`}>
+                  <div>
+                    <h3 className="font-serif text-2xl font-semibold text-foreground">{q.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{q.body}</p>
+                  </div>
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:rotate-45">
+                    <ArrowUpRight className="size-4" />
+                  </span>
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>
@@ -239,12 +254,14 @@ export default function Home() {
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {s.body}
                   </p>
-                  <Link
-                    to="/residents"
+                  <a
+                    href={RESIDENT_PORTAL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-5 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-[0.2em] text-accent hover:text-primary"
                   >
                     Learn more <ArrowUpRight className="size-3" />
-                  </Link>
+                  </a>
                 </motion.article>
               </StaggerItem>
             ))}
