@@ -23,8 +23,10 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)] relative overflow-hidden">
-      <HeaderLeaves count={12} />
+    <header className="sticky top-0 z-30 border-b border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)] relative">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <HeaderLeaves count={12} />
+      </div>
       <div className="relative z-10 flex items-center gap-2 px-3 py-2">
         <ThemeToggle />
         <Link to="/" className="flex flex-1 justify-center" aria-label="Miedema Property Management — Home">
