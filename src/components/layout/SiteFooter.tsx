@@ -61,7 +61,7 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-lg text-sidebar-foreground">Portals</h4>
           <ul className="mt-4 space-y-2 text-sm text-sidebar-foreground/75">
-            <li><Link to="/residents" className="hover:text-sidebar-primary">Resident Portal</Link></li>
+            <li><a href={RESIDENT_PORTAL_URL} target="_blank" rel="noopener noreferrer" className="hover:text-sidebar-primary">Resident Portal</a></li>
           </ul>
         </div>
       </div>
