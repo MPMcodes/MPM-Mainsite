@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
@@ -13,6 +13,8 @@ import { HeaderLeaves } from "./HeaderLeaves";
  */
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+  const [headerH, setHeaderH] = useState(56);
 
   // Close drawer on route change via Escape, prevent background scroll.
   useEffect(() => {
@@ -22,9 +24,24 @@ export function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // Track header height so the mobile popout always starts flush below it.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => setHeaderH(el.getBoundingClientRect().height);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener("resize", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
     <>
-    <header className={`sticky top-0 z-30 bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 relative ${open ? "" : "border-b border-[oklch(1_0_0/0.5)] shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"}`}>
+    <header ref={headerRef} className={`sticky top-0 z-30 bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 relative ${open ? "" : "border-b border-[oklch(1_0_0/0.5)] shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"}`}>
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <HeaderLeaves count={12} />
       </div>
@@ -94,7 +111,8 @@ export function SiteHeader() {
       <nav
         id="primary-nav"
         aria-label="Primary"
-        className="fixed right-0 top-14 bottom-0 z-40 w-64 max-w-[80vw] overflow-hidden border-l border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,-8px_0_24px_-12px_oklch(0.235_0.028_50/0.3)] sm:hidden"
+        style={{ top: headerH }}
+        className="fixed right-0 bottom-0 z-40 w-64 max-w-[80vw] overflow-hidden border-l border-t border-[oklch(1_0_0/0.5)] bg-[oklch(0.98_0.012_80/0.7)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_1px_0_0_oklch(1_0_0/0.7)_inset,-8px_0_24px_-12px_oklch(0.235_0.028_50/0.3)] sm:hidden"
       >
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <HeaderLeaves count={14} />
