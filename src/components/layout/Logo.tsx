@@ -48,12 +48,12 @@ export function Logo({
         <img
           src={propertySrc}
           alt="Property"
-          className={`h-7 w-auto object-contain ${tint}`}
+          className={`h-5 w-auto object-contain ${tint}`}
         />
         <img
           src={managementSrc}
           alt="Management"
-          className={`h-7 w-auto object-contain ${tint}`}
+          className={`h-5 w-auto object-contain ${tint}`}
         />
       </div>
 
