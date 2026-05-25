@@ -48,19 +48,18 @@ export function SiteHeader() {
         <nav
           id="primary-nav"
           aria-label="Primary"
-          className="absolute left-0 right-0 top-full border-t border-border/50 bg-[oklch(0.98_0.012_80/0.95)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"
+          className="absolute left-0 right-0 top-full z-20 border-t border-border/50 bg-[oklch(0.98_0.012_80/0.95)] backdrop-blur-2xl backdrop-saturate-200 shadow-[0_8px_24px_-12px_oklch(0.235_0.028_50/0.3)]"
         >
-          <ul className="flex flex-col gap-1 px-3 py-3 sm:px-6">
-
+          <ul className="flex flex-row items-center gap-1 overflow-x-auto whitespace-nowrap px-3 py-2 sm:justify-center sm:px-6">
             {NAV_ITEMS.map((item) => (
-              <li key={item.to}>
+              <li key={item.to} className="shrink-0">
                 {item.external ? (
                   <a
                     href={item.to}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-wide transition-colors text-foreground/80 hover:bg-muted hover:text-accent"
+                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium tracking-wide transition-colors text-foreground/80 hover:bg-muted hover:text-accent"
                   >
                     <item.icon className="size-4" />
                     {item.label}
@@ -71,7 +70,7 @@ export function SiteHeader() {
                     end={item.to === "/"}
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
-                      `flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-wide transition-colors ${
+                      `flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
                         isActive
                           ? "bg-muted text-accent"
                           : "text-foreground/80 hover:bg-muted hover:text-accent"
