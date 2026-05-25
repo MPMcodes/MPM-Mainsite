@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
-import { NAV_ITEMS } from "./nav-items";
+import { NAV_ITEMS, RESIDENT_PORTAL_URL } from "./nav-items";
 import houseSrc from "@/assets/miedema-house.jpg";
 
 export function SiteFooter() {
