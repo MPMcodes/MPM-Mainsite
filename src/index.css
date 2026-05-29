@@ -60,20 +60,20 @@
 :root {
   --radius: 0.75rem;
 
-  --background: oklch(0.903 0.024 78);          /* warm cream */
-  --foreground: oklch(0.235 0.028 50);          /* deep espresso */
+  --background: oklch(0.903 0.024 78); /* warm cream */
+  --foreground: oklch(0.235 0.028 50); /* deep espresso */
   --card: oklch(0.862 0.028 78);
   --card-foreground: oklch(0.235 0.028 50);
   --popover: oklch(0.903 0.024 78);
   --popover-foreground: oklch(0.235 0.028 50);
 
-  --primary: oklch(0.405 0.082 55);             /* rich saddle brown */
+  --primary: oklch(0.405 0.082 55); /* rich saddle brown */
   --primary-foreground: oklch(0.972 0.012 80);
   --secondary: oklch(0.832 0.024 78);
   --secondary-foreground: oklch(0.235 0.028 50);
   --muted: oklch(0.848 0.022 78);
-  --muted-foreground: oklch(0.450 0.022 55);
-  --accent: oklch(0.575 0.115 55);              /* warm caramel */
+  --muted-foreground: oklch(0.45 0.022 55);
+  --accent: oklch(0.575 0.115 55); /* warm caramel */
   --accent-foreground: oklch(0.972 0.012 80);
 
   --destructive: oklch(0.575 0.205 28);
@@ -86,10 +86,10 @@
   --ring: oklch(0.405 0.082 55);
 
   /* Dark espresso sidebar surface */
-  --sidebar-background: oklch(0.268 0.030 50);
+  --sidebar-background: oklch(0.268 0.03 50);
   --sidebar-foreground: oklch(0.918 0.022 78);
   --sidebar-primary: oklch(0.665 0.115 60);
-  --sidebar-primary-foreground: oklch(0.268 0.030 50);
+  --sidebar-primary-foreground: oklch(0.268 0.03 50);
   --sidebar-accent: oklch(0.328 0.028 50);
   --sidebar-accent-foreground: oklch(0.918 0.022 78);
   --sidebar-border: oklch(0.358 0.025 50);
@@ -109,7 +109,7 @@
   --primary-foreground: oklch(0.198 0.022 50);
   --secondary: oklch(0.295 0.024 50);
   --secondary-foreground: oklch(0.918 0.022 78);
-  --muted: oklch(0.275 0.020 50);
+  --muted: oklch(0.275 0.02 50);
   --muted-foreground: oklch(0.708 0.018 75);
   --accent: oklch(0.718 0.135 60);
   --accent-foreground: oklch(0.198 0.022 50);
@@ -126,20 +126,20 @@
 .admin-theme {
   --background: oklch(0.888 0.018 65);
   --foreground: oklch(0.235 0.028 50);
-  --card: oklch(0.842 0.020 65);
+  --card: oklch(0.842 0.02 65);
   --card-foreground: oklch(0.235 0.028 50);
   --popover: oklch(0.888 0.018 65);
   --popover-foreground: oklch(0.235 0.028 50);
 
-  --primary: oklch(0.345 0.080 50);
+  --primary: oklch(0.345 0.08 50);
   --primary-foreground: oklch(0.972 0.012 80);
   --accent: oklch(0.495 0.095 55);
   --accent-foreground: oklch(0.972 0.012 80);
-  --muted: oklch(0.820 0.018 65);
+  --muted: oklch(0.82 0.018 65);
   --muted-foreground: oklch(0.402 0.018 50);
-  --border: oklch(0.738 0.020 65);
-  --input: oklch(0.738 0.020 65);
-  --ring: oklch(0.345 0.080 50);
+  --border: oklch(0.738 0.02 65);
+  --input: oklch(0.738 0.02 65);
+  --ring: oklch(0.345 0.08 50);
 }
 
 @layer base {
@@ -156,14 +156,26 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3, h4, h5, h6, .font-serif {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-serif {
     font-family: var(--font-serif);
   }
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @utility animate-fade-up {
@@ -204,14 +216,57 @@
  * edge; parent must clip overflow.
  */
 @keyframes header-leaf-fall {
-  0% { transform: translate3d(0, -24px, 0) rotate(0deg); opacity: 0; }
-  12% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { transform: translate3d(0, 140px, 0) rotate(540deg); opacity: 0; }
+  0% {
+    transform: translate3d(0, -24px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 140px, 0) rotate(540deg);
+    opacity: 0;
+  }
 }
 @keyframes header-leaf-sway {
-  0%, 100% { transform: translateX(-10px); }
-  50% { transform: translateX(10px); }
+  0%,
+  100% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
 }
-.animate-header-leaf-fall { animation: header-leaf-fall linear infinite; }
-.animate-header-leaf-sway { animation: header-leaf-sway ease-in-out infinite; }
+.animate-header-leaf-fall {
+  animation: header-leaf-fall linear infinite;
+}
+.animate-header-leaf-sway {
+  animation: header-leaf-sway ease-in-out infinite;
+}
+
+/*
+ * Hero ambient motes — slow, drifting specks behind the hero copy. Gentle
+ * vertical float + soft fade so they read as dust in warm light, not snow.
+ * Used by HeroAmbient; disabled there on reduced motion.
+ */
+@keyframes hero-mote {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(6px, -22px, 0);
+  }
+}
+.animate-hero-mote {
+  animation: hero-mote ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-mote {
+    animation: none;
+  }
+}
