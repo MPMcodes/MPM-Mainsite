@@ -4,7 +4,7 @@
   // assets. SPA handling makes client-side routes (/properties, /journal,
   // /admin) resolve on direct hit / refresh — the Workers equivalent of the
   // public/_redirects file used by Cloudflare Pages.
-  "name": "mpm-mainsite",
+  "name": "mpmmainsite",
   "compatibility_date": "2026-05-29",
   "assets": {
     "directory": "./dist",
