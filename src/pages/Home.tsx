@@ -31,11 +31,13 @@ import {
   staggerContainer,
   staggerItem,
 } from "@/lib/motion";
-import maintenanceStandardsImage from "@/assets/maintenance-standards.png";
-import rentalManagerSystemsImage from "@/assets/rental-manager-systems.png";
+import maintenanceStandardsImage from "@/assets/maintenance-standards.webp";
+import rentalManagerSystemsImage from "@/assets/rental-manager-systems.webp";
 
+// Sits behind an 80%-opaque, blurred overlay, so a smaller/softer source is
+// visually identical while cutting the mobile payload roughly in half.
 const HERO_PHOTO =
-  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=2400&q=80";
+  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1600&q=60";
 
 const RESIDENT_PORTAL_URL = "https://portal.miedemapropertymanagement.com";
 

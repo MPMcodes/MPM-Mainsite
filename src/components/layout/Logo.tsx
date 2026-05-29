@@ -1,8 +1,8 @@
-import houseSrc from "@/assets/logo-house.png";
-import miedemaSrc from "@/assets/logo-miedema.png";
-import propertySrc from "@/assets/logo-property.png";
-import managementSrc from "@/assets/logo-management.png";
-import mobileHeaderSrc from "@/assets/logo-header-mobile.png";
+import houseSrc from "@/assets/logo-house.webp";
+import miedemaSrc from "@/assets/logo-miedema.webp";
+import propertySrc from "@/assets/logo-property.webp";
+import managementSrc from "@/assets/logo-management.webp";
+import mobileHeaderSrc from "@/assets/logo-header-mobile.webp";
 
 /**
  * Miedema header lockup. Mobile uses a single tight composite that stays
