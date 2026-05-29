@@ -17,3 +17,5 @@ git push                      # → GitLab + GitHub
 - `github` — git@github.com:MPMcodes/MPM-Mainsite.git (copy)
 
 No Lovable, no GitHub Actions, no deploy tokens — this box has SSH write to both remotes.
+
+Shortcut: `/mpm_push [message]` commits pending changes and dual-pushes in one step.
