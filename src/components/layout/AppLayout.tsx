@@ -6,6 +6,7 @@ import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { BackgroundWash } from "./BackgroundWash";
 import { PageTransition } from "@/components/motion/PageTransition";
+import { ChatWidget } from "@/components/ChatWidget";
 
 export function AppLayout() {
   const location = useLocation();
@@ -23,6 +24,7 @@ export function AppLayout() {
       </main>
       <SiteFooter />
       <Toaster />
+      <ChatWidget />
     </div>
   );
 }
