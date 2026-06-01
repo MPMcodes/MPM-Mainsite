@@ -35,6 +35,7 @@ import heroPhoto from "@/assets/home-hero.webp";
 import lookedAfterImage from "@/assets/home-looked-after.webp";
 import maintenanceImage from "@/assets/home-maintenance.webp";
 import moveInImage from "@/assets/home-move-in.webp";
+import newHerePhoto from "@/assets/home-new-here.webp";
 
 // Local WebP (downloaded from Unsplash, optimized). Sits behind an 80%-opaque,
 // blurred overlay, so a softer/smaller source is visually identical.
@@ -404,77 +405,101 @@ export default function Home() {
       </section>
 
       {/* ---------- NEW CLIENT INQUIRY FORM ---------- */}
-      <section className="mx-auto max-w-3xl px-6 py-24 lg:px-10">
-        <Reveal className="text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
-            New here?
-          </p>
-          <h2 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-            Interested? Give us a chat.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Tell us a little about what you're looking for and our family team will reach out
-            personally.
-          </p>
-        </Reveal>
+      <section className="relative isolate overflow-hidden">
+        {/* Welcoming front-door photo, washed behind an 80% overlay (hero treatment) */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-20 bg-cover bg-center"
+          style={{ backgroundImage: `url(${newHerePhoto})` }}
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-background/80 backdrop-blur-[2px]" />
 
-        <Reveal delay={0.1}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            noValidate
-            className={`${cardBase} mt-10 grid gap-5 p-7 sm:p-9`}
-          >
-            <div className="grid gap-2">
-              <Label htmlFor="inq-name">Name</Label>
-              <Input id="inq-name" autoComplete="name" maxLength={100} {...form.register("name")} />
-              {form.formState.errors.name && (
-                <p className="text-xs text-destructive">{form.formState.errors.name.message}</p>
-              )}
-            </div>
+        <div className="mx-auto max-w-3xl px-6 py-24 lg:px-10">
+          <Reveal className="text-center">
+            <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
+              New here?
+            </p>
+            <h2 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+              Interested? Give us a chat.
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              Tell us a little about what you're looking for and our family team will reach out
+              personally.
+            </p>
+          </Reveal>
 
-            <div className="grid gap-5 sm:grid-cols-2">
+          <Reveal delay={0.1}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              noValidate
+              className={`${cardBase} mt-10 grid gap-5 p-7 sm:p-9`}
+            >
               <div className="grid gap-2">
-                <Label htmlFor="inq-email">Email</Label>
+                <Label htmlFor="inq-name">Name</Label>
                 <Input
-                  id="inq-email"
-                  type="email"
-                  autoComplete="email"
-                  maxLength={255}
-                  {...form.register("email")}
+                  id="inq-name"
+                  autoComplete="name"
+                  maxLength={100}
+                  {...form.register("name")}
                 />
-                {form.formState.errors.email && (
-                  <p className="text-xs text-destructive">{form.formState.errors.email.message}</p>
+                {form.formState.errors.name && (
+                  <p className="text-xs text-destructive">{form.formState.errors.name.message}</p>
                 )}
               </div>
-              <div className="grid gap-2">
-                <Label htmlFor="inq-phone">
-                  Phone <span className="text-muted-foreground">(optional)</span>
-                </Label>
-                <Input
-                  id="inq-phone"
-                  type="tel"
-                  autoComplete="tel"
-                  maxLength={30}
-                  {...form.register("phone")}
-                />
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid gap-2">
+                  <Label htmlFor="inq-email">Email</Label>
+                  <Input
+                    id="inq-email"
+                    type="email"
+                    autoComplete="email"
+                    maxLength={255}
+                    {...form.register("email")}
+                  />
+                  {form.formState.errors.email && (
+                    <p className="text-xs text-destructive">
+                      {form.formState.errors.email.message}
+                    </p>
+                  )}
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="inq-phone">
+                    Phone <span className="text-muted-foreground">(optional)</span>
+                  </Label>
+                  <Input
+                    id="inq-phone"
+                    type="tel"
+                    autoComplete="tel"
+                    maxLength={30}
+                    {...form.register("phone")}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="inq-message">What are you looking for?</Label>
-              <Textarea id="inq-message" rows={5} maxLength={1000} {...form.register("message")} />
-              {form.formState.errors.message && (
-                <p className="text-xs text-destructive">{form.formState.errors.message.message}</p>
-              )}
-            </div>
+              <div className="grid gap-2">
+                <Label htmlFor="inq-message">What are you looking for?</Label>
+                <Textarea
+                  id="inq-message"
+                  rows={5}
+                  maxLength={1000}
+                  {...form.register("message")}
+                />
+                {form.formState.errors.message && (
+                  <p className="text-xs text-destructive">
+                    {form.formState.errors.message.message}
+                  </p>
+                )}
+              </div>
 
-            <MagneticButton className="mt-2 justify-self-start">
-              <Button type="submit" size="lg" className="uppercase tracking-[0.18em] text-xs">
-                Send Inquiry <ArrowUpRight className="ml-1 size-4" />
-              </Button>
-            </MagneticButton>
-          </form>
-        </Reveal>
+              <MagneticButton className="mt-2 justify-self-start">
+                <Button type="submit" size="lg" className="uppercase tracking-[0.18em] text-xs">
+                  Send Inquiry <ArrowUpRight className="ml-1 size-4" />
+                </Button>
+              </MagneticButton>
+            </form>
+          </Reveal>
+        </div>
       </section>
     </div>
   );
