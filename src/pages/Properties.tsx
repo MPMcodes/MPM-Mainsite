@@ -165,18 +165,21 @@ export default function Properties() {
   return (
     <div>
       {/* ---------- HEADER (interactive: cursor light + motes) ---------- */}
-      <section className="relative isolate overflow-hidden">
+      <section className="relative isolate overflow-hidden bg-sidebar text-sidebar-foreground">
         <HeroAmbient />
         <div className="mx-auto max-w-6xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
           <Reveal>
             <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-border" />
-              <span className={eyebrow}>Available Homes</span>
+              <span className="h-px w-8 bg-sidebar-border" />
+              <span className="text-xs font-medium uppercase tracking-[0.28em] text-sidebar-foreground/55">
+                Available Homes
+              </span>
             </div>
-            <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-              Homes worth <em className="font-normal italic text-accent">settling into.</em>
+            <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-sidebar-foreground md:text-6xl lg:text-7xl">
+              Homes worth{" "}
+              <em className="font-normal italic text-sidebar-primary">settling into.</em>
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-sidebar-foreground/75 md:text-lg">
               We&apos;re a small, family-run team looking after a handful of homes in the
               neighborhoods we know best. They don&apos;t open up often — but when they do,
               they&apos;re clean, well-loved, and ready for someone to call home.
@@ -185,18 +188,18 @@ export default function Properties() {
 
           <Reveal delay={0.1}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-sidebar-border bg-sidebar-accent/50 px-3.5 py-1.5 text-xs font-medium text-sidebar-foreground/85 shadow-sm">
                 <span className="relative flex size-2">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent/60" />
                   <span className="relative inline-flex size-2 rounded-full bg-accent" />
                 </span>
                 No homes open right now
               </span>
-              <span className="hidden h-4 w-px bg-border sm:block" />
+              <span className="hidden h-4 w-px bg-sidebar-border sm:block" />
               {HOME_TYPES.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-border/60 px-3 py-1.5 text-xs text-muted-foreground"
+                  className="rounded-full border border-sidebar-border px-3 py-1.5 text-xs text-sidebar-foreground/70"
                 >
                   {t}
                 </span>
