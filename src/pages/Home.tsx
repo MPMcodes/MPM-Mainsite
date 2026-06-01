@@ -36,6 +36,7 @@ import lookedAfterImage from "@/assets/home-looked-after.webp";
 import maintenanceImage from "@/assets/home-maintenance.webp";
 import moveInImage from "@/assets/home-move-in.webp";
 import newHerePhoto from "@/assets/home-new-here.webp";
+import residentsPhoto from "@/assets/home-residents.webp";
 
 // Local WebP (downloaded from Unsplash, optimized). Sits behind an 80%-opaque,
 // blurred overlay, so a softer/smaller source is visually identical.
@@ -335,7 +336,15 @@ export default function Home() {
       </section>
 
       {/* ---------- SERVICES GRID ---------- */}
-      <section className="border-y border-border/60 bg-muted/40">
+      <section className="relative isolate overflow-hidden border-y border-border/60">
+        {/* Tree-lined neighborhood photo, washed behind an 80% overlay (hero treatment) */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-20 bg-cover bg-center"
+          style={{ backgroundImage: `url(${residentsPhoto})` }}
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-background/80 backdrop-blur-[2px]" />
+
         <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
           <Reveal className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">

@@ -7,3 +7,4 @@ Home-page photography sourced from [Unsplash](https://unsplash.com) (Unsplash Li
 - **maintenance** — photo by [Annie](Gray?utm_source=mpm-mainsite&utm_medium=referral) (id `WEWTGkPUVT0`)
 - **move-in** — photo by [Jakub](Żerdzicki?utm_source=mpm-mainsite&utm_medium=referral) (id `bqUZEAeWuok`)
 - **new-here (inquiry section bg)** — photo by [Megan](Lee?utm_source=mpm-mainsite&utm_medium=referral) (id `Z7QmCFE6i6I`)
+- **for-our-residents (services section bg)** — photo by [Faith](Crabtree?utm_source=mpm-mainsite&utm_medium=referral) (id `6ROWaq9mdew`)
