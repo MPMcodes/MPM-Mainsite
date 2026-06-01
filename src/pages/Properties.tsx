@@ -24,7 +24,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { HeroAmbient } from "@/components/motion/HeroAmbient";
-import { AmbientMesh } from "@/components/motion/AmbientMesh";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { HOVER_SPRING } from "@/lib/motion";
 import gridPhoto from "@/assets/properties-grid.webp";
@@ -240,9 +239,9 @@ export default function Properties() {
         </div>
       </section>
 
-      {/* ---------- HOW LEASING WORKS (interactive: reactive gradient mesh) ---------- */}
+      {/* ---------- HOW LEASING WORKS (interactive: cursor light + motes, same as header) ---------- */}
       <section className="relative isolate overflow-hidden border-y border-border/60 bg-muted/40">
-        <AmbientMesh />
+        <HeroAmbient travel={224} />
         <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className={eyebrow}>How leasing works</p>
