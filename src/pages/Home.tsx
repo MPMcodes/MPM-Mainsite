@@ -31,13 +31,14 @@ import {
   staggerContainer,
   staggerItem,
 } from "@/lib/motion";
-import maintenanceStandardsImage from "@/assets/maintenance-standards.webp";
-import rentalManagerSystemsImage from "@/assets/rental-manager-systems.webp";
+import heroPhoto from "@/assets/home-hero.webp";
+import lookedAfterImage from "@/assets/home-looked-after.webp";
+import maintenanceImage from "@/assets/home-maintenance.webp";
+import moveInImage from "@/assets/home-move-in.webp";
 
-// Sits behind an 80%-opaque, blurred overlay, so a smaller/softer source is
-// visually identical while cutting the mobile payload roughly in half.
-const HERO_PHOTO =
-  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1600&q=60";
+// Local WebP (downloaded from Unsplash, optimized). Sits behind an 80%-opaque,
+// blurred overlay, so a softer/smaller source is visually identical.
+const HERO_PHOTO = heroPhoto;
 
 const RESIDENT_PORTAL_URL = "https://portal.miedemapropertymanagement.com";
 
@@ -63,18 +64,20 @@ const QUICK_LINKS = [
 const PILLARS = [
   {
     title: "A Home That's Looked After",
-    image: rentalManagerSystemsImage,
+    image: lookedAfterImage,
+    alt: "A well-kept craftsman home with a welcoming front porch",
     body: "We're a family-run team, not a call center. When something comes up — and it always does — you know exactly who to call and what the plan is. Communication is open, friendly, and quick, because the people answering the phone are the same people who care for your home.",
   },
   {
     title: "Maintenance Done Right",
-    image: maintenanceStandardsImage,
+    image: maintenanceImage,
+    alt: "A maintenance team member at work inside a home",
     body: "Every home is unique, and we treat it that way. Our in-house team handles requests promptly, with photos and updates as work progresses. Because we don't profit from maintenance markups, repairs stay fair and transparent — focused on keeping your home comfortable.",
   },
   {
     title: "Move-In You Can Look Forward To",
-    image:
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80",
+    image: moveInImage,
+    alt: "A hand offering house keys at an open front door",
     body: "Clear leases, friendly walk-throughs, and a home that's truly ready on day one. We're with you from your first showing through every renewal — making sure settling in feels easy and welcoming.",
   },
 ];
@@ -170,7 +173,7 @@ function PillarBlock({ pillar, flip }: { pillar: (typeof PILLARS)[number]; flip:
       >
         <motion.img
           src={pillar.image}
-          alt={pillar.title}
+          alt={pillar.alt}
           loading="lazy"
           style={reduced ? undefined : { y: imageY, scale: 1.12 }}
           whileHover={reduced ? undefined : { scale: 1.18 }}
