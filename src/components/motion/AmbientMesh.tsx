@@ -51,7 +51,7 @@ export function AmbientMesh() {
           x: x1,
           y: y1,
           background:
-            "radial-gradient(circle at 50% 50%, oklch(0.575 0.115 55 / 0.22), transparent 65%)",
+            "radial-gradient(circle at 50% 50%, oklch(0.575 0.115 55 / 0.31), transparent 65%)",
           willChange: "transform",
         }}
       />
@@ -61,7 +61,7 @@ export function AmbientMesh() {
           x: x2,
           y: y2,
           background:
-            "radial-gradient(circle at 50% 50%, oklch(0.665 0.115 60 / 0.20), transparent 65%)",
+            "radial-gradient(circle at 50% 50%, oklch(0.665 0.115 60 / 0.28), transparent 65%)",
           willChange: "transform",
         }}
       />

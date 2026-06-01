@@ -17,10 +17,11 @@ import { useIsMobile } from "@/hooks/use-mobile";
  */
 
 const MOTE_COUNT = 7;
-/** px of light travel across the full viewport — intentionally gentle. */
+/** Default px of light travel across the viewport — gentle. Override per
+ *  instance via the `travel` prop (e.g. a stronger pull on a dark header). */
 const LIGHT_TRAVEL = 160;
 
-export function HeroAmbient() {
+export function HeroAmbient({ travel = LIGHT_TRAVEL }: { travel?: number }) {
   const reduced = useReducedMotion();
   const isMobile = useIsMobile();
   const enableCursor = !reduced && !isMobile;
@@ -31,8 +32,8 @@ export function HeroAmbient() {
   const py = useMotionValue(0.35);
   const sx = useSpring(px, { stiffness: 60, damping: 20, mass: 0.6 });
   const sy = useSpring(py, { stiffness: 60, damping: 20, mass: 0.6 });
-  const lightX = useTransform(sx, [0, 1], [-LIGHT_TRAVEL, LIGHT_TRAVEL]);
-  const lightY = useTransform(sy, [0, 1], [-LIGHT_TRAVEL, LIGHT_TRAVEL]);
+  const lightX = useTransform(sx, [0, 1], [-travel, travel]);
+  const lightY = useTransform(sy, [0, 1], [-travel, travel]);
 
   useEffect(() => {
     if (!enableCursor) return;

@@ -166,7 +166,7 @@ export default function Properties() {
     <div>
       {/* ---------- HEADER (interactive: cursor light + motes) ---------- */}
       <section className="relative isolate overflow-hidden bg-sidebar text-sidebar-foreground">
-        <HeroAmbient />
+        <HeroAmbient travel={224} />
         <div className="mx-auto max-w-6xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
           <Reveal>
             <div className="flex items-center gap-3">
