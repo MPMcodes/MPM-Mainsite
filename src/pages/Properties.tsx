@@ -23,8 +23,12 @@ import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { MagneticButton } from "@/components/motion/MagneticButton";
+import { HeroAmbient } from "@/components/motion/HeroAmbient";
+import { AmbientMesh } from "@/components/motion/AmbientMesh";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { HOVER_SPRING } from "@/lib/motion";
+import gridPhoto from "@/assets/properties-grid.webp";
+import notifyPhoto from "@/assets/properties-notify.webp";
 
 const eyebrow = "text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground";
 const cardBase = "rounded-2xl border border-border/60 bg-card text-card-foreground shadow-sm";
@@ -160,69 +164,82 @@ export default function Properties() {
 
   return (
     <div>
-      {/* ---------- HEADER ---------- */}
-      <section className="mx-auto max-w-6xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
-        <Reveal>
-          <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-border" />
-            <span className={eyebrow}>Available Homes</span>
-          </div>
-          <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Homes worth <em className="font-normal italic text-accent">settling into.</em>
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            We&apos;re a small, family-run team looking after a handful of homes in the
-            neighborhoods we know best. They don&apos;t open up often — but when they do,
-            they&apos;re clean, well-loved, and ready for someone to call home.
-          </p>
-        </Reveal>
+      {/* ---------- HEADER (interactive: cursor light + motes) ---------- */}
+      <section className="relative isolate overflow-hidden">
+        <HeroAmbient />
+        <div className="mx-auto max-w-6xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
+          <Reveal>
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-border" />
+              <span className={eyebrow}>Available Homes</span>
+            </div>
+            <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
+              Homes worth <em className="font-normal italic text-accent">settling into.</em>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              We&apos;re a small, family-run team looking after a handful of homes in the
+              neighborhoods we know best. They don&apos;t open up often — but when they do,
+              they&apos;re clean, well-loved, and ready for someone to call home.
+            </p>
+          </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-sm">
-              <span className="relative flex size-2">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent/60" />
-                <span className="relative inline-flex size-2 rounded-full bg-accent" />
+          <Reveal delay={0.1}>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-sm">
+                <span className="relative flex size-2">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent/60" />
+                  <span className="relative inline-flex size-2 rounded-full bg-accent" />
+                </span>
+                No homes open right now
               </span>
-              No homes open right now
-            </span>
-            <span className="hidden h-4 w-px bg-border sm:block" />
-            {HOME_TYPES.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-border/60 px-3 py-1.5 text-xs text-muted-foreground"
-              >
-                {t}
-              </span>
+              <span className="hidden h-4 w-px bg-border sm:block" />
+              {HOME_TYPES.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-border/60 px-3 py-1.5 text-xs text-muted-foreground"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- LISTING PREVIEW GRID (washed photo) ---------- */}
+      <section className="relative isolate overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-20 bg-cover bg-center"
+          style={{ backgroundImage: `url(${gridPhoto})` }}
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-background/80 backdrop-blur-[2px]" />
+        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-10">
+          <Reveal className="max-w-2xl">
+            <p className={eyebrow}>What we manage</p>
+            <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+              When a home opens, it shows up right here.
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              A look at the kinds of homes we care for. The moment one&apos;s available, it&apos;ll
+              appear in this spot — with photos, the details that matter, and a way to book a
+              showing.
+            </p>
+          </Reveal>
+
+          <StaggerGrid className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {CATEGORIES.map((c) => (
+              <StaggerItem key={c.type} className="h-full">
+                <ListingPreviewCard type={c.type} blurb={c.blurb} onNotify={scrollToNotify} />
+              </StaggerItem>
             ))}
-          </div>
-        </Reveal>
+          </StaggerGrid>
+        </div>
       </section>
 
-      {/* ---------- LISTING PREVIEW GRID ---------- */}
-      <section className="mx-auto max-w-6xl px-6 pb-24 lg:px-10">
-        <Reveal className="max-w-2xl">
-          <p className={eyebrow}>What we manage</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-            When a home opens, it shows up right here.
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            A look at the kinds of homes we care for. The moment one&apos;s available, it&apos;ll
-            appear in this spot — with photos, the details that matter, and a way to book a showing.
-          </p>
-        </Reveal>
-
-        <StaggerGrid className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {CATEGORIES.map((c) => (
-            <StaggerItem key={c.type} className="h-full">
-              <ListingPreviewCard type={c.type} blurb={c.blurb} onNotify={scrollToNotify} />
-            </StaggerItem>
-          ))}
-        </StaggerGrid>
-      </section>
-
-      {/* ---------- HOW LEASING WORKS ---------- */}
-      <section className="border-y border-border/60 bg-muted/40">
+      {/* ---------- HOW LEASING WORKS (interactive: reactive gradient mesh) ---------- */}
+      <section className="relative isolate overflow-hidden border-y border-border/60 bg-muted/40">
+        <AmbientMesh />
         <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className={eyebrow}>How leasing works</p>
@@ -252,94 +269,104 @@ export default function Properties() {
         </div>
       </section>
 
-      {/* ---------- NOTIFY CAPTURE ---------- */}
-      <section id="notify" className="mx-auto max-w-3xl scroll-mt-24 px-6 py-24 lg:px-10">
-        <Reveal className="text-center">
-          <p className={eyebrow}>Stay in the loop</p>
-          <h2 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-            Be the first to know.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
-            Tell us a little about what you&apos;re looking for, and our family team will reach out
-            personally the moment a home that fits opens up.
-          </p>
-        </Reveal>
+      {/* ---------- NOTIFY CAPTURE (washed photo) ---------- */}
+      <section id="notify" className="relative isolate scroll-mt-24 overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-20 bg-cover bg-center"
+          style={{ backgroundImage: `url(${notifyPhoto})` }}
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-background/80 backdrop-blur-[2px]" />
+        <div className="mx-auto max-w-3xl px-6 py-24 lg:px-10">
+          <Reveal className="text-center">
+            <p className={eyebrow}>Stay in the loop</p>
+            <h2 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+              Be the first to know.
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+              Tell us a little about what you&apos;re looking for, and our family team will reach
+              out personally the moment a home that fits opens up.
+            </p>
+          </Reveal>
 
-        <Reveal delay={0.1}>
-          {submitted ? (
-            <div
-              className={`${cardBase} mt-10 flex flex-col items-center gap-3 p-10 text-center`}
-              role="status"
-            >
-              <span className="grid size-12 place-items-center rounded-full bg-accent/15 text-accent">
-                <Bell className="size-6" strokeWidth={1.5} />
-              </span>
-              <h3 className="font-serif text-2xl font-semibold text-foreground">
-                You&apos;re on the list.
-              </h3>
-              <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-                We&apos;ll be in touch the moment a home that fits opens up. In the meantime, feel
-                free to reach our team directly any time.
-              </p>
-            </div>
-          ) : (
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              noValidate
-              className={`${cardBase} mt-10 grid gap-5 p-7 sm:p-9`}
-            >
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div className="grid gap-2">
-                  <Label htmlFor="nt-name">Name</Label>
-                  <Input
-                    id="nt-name"
-                    autoComplete="name"
-                    maxLength={100}
-                    {...form.register("name")}
-                  />
-                  {form.formState.errors.name && (
-                    <p className="text-xs text-destructive">{form.formState.errors.name.message}</p>
-                  )}
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="nt-email">Email</Label>
-                  <Input
-                    id="nt-email"
-                    type="email"
-                    autoComplete="email"
-                    maxLength={255}
-                    {...form.register("email")}
-                  />
-                  {form.formState.errors.email && (
-                    <p className="text-xs text-destructive">
-                      {form.formState.errors.email.message}
-                    </p>
-                  )}
-                </div>
+          <Reveal delay={0.1}>
+            {submitted ? (
+              <div
+                className={`${cardBase} mt-10 flex flex-col items-center gap-3 p-10 text-center`}
+                role="status"
+              >
+                <span className="grid size-12 place-items-center rounded-full bg-accent/15 text-accent">
+                  <Bell className="size-6" strokeWidth={1.5} />
+                </span>
+                <h3 className="font-serif text-2xl font-semibold text-foreground">
+                  You&apos;re on the list.
+                </h3>
+                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                  We&apos;ll be in touch the moment a home that fits opens up. In the meantime, feel
+                  free to reach our team directly any time.
+                </p>
               </div>
+            ) : (
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                noValidate
+                className={`${cardBase} mt-10 grid gap-5 p-7 sm:p-9`}
+              >
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div className="grid gap-2">
+                    <Label htmlFor="nt-name">Name</Label>
+                    <Input
+                      id="nt-name"
+                      autoComplete="name"
+                      maxLength={100}
+                      {...form.register("name")}
+                    />
+                    {form.formState.errors.name && (
+                      <p className="text-xs text-destructive">
+                        {form.formState.errors.name.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="nt-email">Email</Label>
+                    <Input
+                      id="nt-email"
+                      type="email"
+                      autoComplete="email"
+                      maxLength={255}
+                      {...form.register("email")}
+                    />
+                    {form.formState.errors.email && (
+                      <p className="text-xs text-destructive">
+                        {form.formState.errors.email.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
 
-              <div className="grid gap-2">
-                <Label htmlFor="nt-pref">
-                  What you&apos;re looking for{" "}
-                  <span className="text-muted-foreground">(optional)</span>
-                </Label>
-                <Textarea
-                  id="nt-pref"
-                  rows={4}
-                  maxLength={500}
-                  placeholder="Bedrooms, part of town, move-in timing, pets…"
-                  {...form.register("preferences")}
-                />
-              </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="nt-pref">
+                    What you&apos;re looking for{" "}
+                    <span className="text-muted-foreground">(optional)</span>
+                  </Label>
+                  <Textarea
+                    id="nt-pref"
+                    rows={4}
+                    maxLength={500}
+                    placeholder="Bedrooms, part of town, move-in timing, pets…"
+                    {...form.register("preferences")}
+                  />
+                </div>
 
-              <MagneticButton className="mt-1 justify-self-start">
-                <Button type="submit" size="lg" className="uppercase tracking-[0.18em] text-xs">
-                  <Bell className="size-4" /> Notify me when a home opens
-                </Button>
-              </MagneticButton>
-            </form>
-          )}
-        </Reveal>
+                <MagneticButton className="mt-1 justify-self-start">
+                  <Button type="submit" size="lg" className="uppercase tracking-[0.18em] text-xs">
+                    <Bell className="size-4" /> Notify me when a home opens
+                  </Button>
+                </MagneticButton>
+              </form>
+            )}
+          </Reveal>
+        </div>
       </section>
     </div>
   );
