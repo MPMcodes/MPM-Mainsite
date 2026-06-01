@@ -111,7 +111,7 @@ export function ChatWidget() {
             setBanned(true);
             setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "assistant", text: "This chat has been closed." }; return c; });
           } else if (evt.type === "error") {
-            setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "assistant", text: "Sorry — something went wrong. Please email us at info and we'll follow up." }; return c; });
+            setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "assistant", text: "Sorry — something went wrong. Please email us at garren@miedemapropertymanagement.com and we'll follow up." }; return c; });
           }
         }
       }
