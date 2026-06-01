@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import Home from "@/pages/Home";
+import Properties from "@/pages/Properties";
 import ComingSoon from "@/pages/ComingSoon";
 import NotFound from "@/pages/NotFound";
 
@@ -17,9 +18,7 @@ export default function App() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<Home />} />
-        <Route path="properties" element={<ComingSoon title="Portfolio" />} />
-        
-        
+        <Route path="properties" element={<Properties />} />
         <Route path="journal" element={<ComingSoon title="The Journal" />} />
         <Route path="admin" element={<AdminShell />} />
         <Route path="*" element={<NotFound />} />
