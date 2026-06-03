@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { toast } from "sonner";
+import { submitContact } from "@/lib/contact";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -117,7 +119,6 @@ const SERVICES = [
   },
 ];
 
-const CRM_URL = "#"; // TODO: replace with CRM intake endpoint
 
 const inquirySchema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -198,9 +199,16 @@ export default function Home() {
     resolver: zodResolver(inquirySchema),
     defaultValues: { name: "", email: "", phone: "", message: "" },
   });
-  const onSubmit = (_values: InquiryValues) => {
-    // TODO: wire to CRM intake
-    window.location.href = CRM_URL;
+  const onSubmit = async (values: InquiryValues) => {
+    try {
+      await submitContact(values);
+      toast.success("Thanks — your inquiry is in. Our family team will reach out personally.");
+      form.reset();
+    } catch {
+      toast.error(
+        "Sorry, something went wrong sending that. Please email garren@miedemapropertymanagement.com or try again.",
+      );
+    }
   };
 
   const reduced = useReducedMotion();
@@ -502,7 +510,7 @@ export default function Home() {
               </div>
 
               <MagneticButton className="mt-2 justify-self-start">
-                <Button type="submit" size="lg" className="uppercase tracking-[0.18em] text-xs">
+                <Button type="submit" size="lg" disabled={form.formState.isSubmitting} className="uppercase tracking-[0.18em] text-xs">
                   Send Inquiry <ArrowUpRight className="ml-1 size-4" />
                 </Button>
               </MagneticButton>

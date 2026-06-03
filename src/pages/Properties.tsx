@@ -15,6 +15,7 @@ import {
   Maximize,
 } from "lucide-react";
 import { toast } from "sonner";
+import { submitContact } from "@/lib/contact";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -155,10 +156,22 @@ export default function Properties() {
     document.getElementById("notify")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
   };
 
-  const onSubmit = (_values: NotifyValues) => {
-    // TODO: wire to CRM / notify list
-    setSubmitted(true);
-    toast.success("You're on the list — we'll reach out the moment a home opens up.");
+  const onSubmit = async (values: NotifyValues) => {
+    try {
+      await submitContact({
+        name: values.name,
+        email: values.email,
+        message: values.preferences
+          ? `New-listing notify — preferences: ${values.preferences}`
+          : "New-listing notify list signup",
+      });
+      setSubmitted(true);
+      toast.success("You're on the list — we'll reach out the moment a home opens up.");
+    } catch {
+      toast.error(
+        "Sorry, something went wrong. Please try again or email garren@miedemapropertymanagement.com.",
+      );
+    }
   };
 
   return (
