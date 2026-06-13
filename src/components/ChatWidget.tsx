@@ -29,7 +29,24 @@ const PALETTES = {
   },
 };
 
-const clean = (t: string) => t.replace(AGENT_TAG_RE, "").replace(/\s{2,}/g, " ").trimStart();
+// Strip agent tags; collapse runs of spaces/tabs but PRESERVE line breaks
+// (the agent uses blank lines for breathing room) — cap at one blank line.
+const clean = (t: string) =>
+  t.replace(AGENT_TAG_RE, "").replace(/[ \t]{2,}/g, " ").replace(/\n{3,}/g, "\n\n").replace(/^\s+/, "");
+
+// Typing indicator — 3 bouncing dots (self-contained; matches the TalkAbilities chat).
+function TypingDots() {
+  return (
+    <span aria-label="typing" style={{ display: "inline-flex", gap: 4, alignItems: "center", padding: "3px 0" }}>
+      <style>{`@keyframes mpm-chat-bounce{0%,80%,100%{transform:scale(.7);opacity:.35}40%{transform:scale(1);opacity:.9}}@media (prefers-reduced-motion:reduce){.mpm-chat-dot{animation:none!important}}`}</style>
+      {[0, 0.15, 0.3].map((d, i) => (
+        <span key={i} className="mpm-chat-dot"
+          style={{ width: 6, height: 6, borderRadius: "50%", background: "currentColor", opacity: 0.35,
+            animation: `mpm-chat-bounce 1.2s ${d}s infinite ease-in-out` }} />
+      ))}
+    </span>
+  );
+}
 
 export function ChatWidget() {
   const { theme } = useTheme();
@@ -91,6 +108,8 @@ export function ChatWidget() {
       const dec = new TextDecoder();
       let buf = "";
       let acc = "";
+      let shownFirst = false;
+      const startedAt = Date.now();
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
@@ -104,6 +123,12 @@ export function ChatWidget() {
           try { evt = JSON.parse(s.slice(5).trim()); } catch { continue; }
           if (evt.type === "delta" && evt.text) {
             acc += evt.text;
+            // Let the typing dots breathe ~700ms before the first text lands.
+            if (!shownFirst) {
+              shownFirst = true;
+              const wait = 700 - (Date.now() - startedAt);
+              if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+            }
             const shown = clean(acc);
             setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "assistant", text: shown }; return c; });
           } else if (evt.type === "banned") {
@@ -156,7 +181,7 @@ export function ChatWidget() {
                 background: m.role === "user" ? p.user : p.bot, color: m.role === "user" ? p.userText : p.botText,
                 padding: "0.55rem 0.8rem", borderRadius: m.role === "user" ? "0.9rem 0.9rem 0.2rem 0.9rem" : "0.9rem 0.9rem 0.9rem 0.2rem",
                 fontSize: "0.9rem", lineHeight: 1.45, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
-                {m.text || (busy && i === msgs.length - 1 ? "…" : "")}
+                {m.text ? m.text : busy && i === msgs.length - 1 ? <TypingDots /> : ""}
               </div>
             ))}
           </div>
